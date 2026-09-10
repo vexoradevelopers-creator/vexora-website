@@ -1,0 +1,78 @@
+@import "@heroui/styles";
+
+@theme {
+  --font-display: var(--font-saira), "Segoe UI", system-ui, sans-serif;
+  --font-sans: var(--font-plex-sans), "Segoe UI", system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, Consolas, monospace;
+
+  /* A third text level below HeroUI's --muted. 5.3:1 on the page ground. */
+  --color-faint: #858c89;
+}
+
+/*
+ * Vexora theme. Deliberately unlayered: unlayered rules beat anything in
+ * @layer theme, so these win over HeroUI's dark defaults without !important.
+ * Only base tokens are set — HeroUI derives the rest with color-mix().
+ */
+:root,
+.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background: #08090a;
+  --foreground: #edf1ec;
+
+  --surface: #121517;
+  --surface-secondary: #171b1d;
+  --surface-tertiary: #1b2124;
+  --overlay: #121517;
+
+  --muted: #9ba3a1;
+
+  --default: #171b1d;
+  --default-foreground: #edf1ec;
+
+  --field-background: #0e1011;
+  --field-foreground: #edf1ec;
+  --field-placeholder: #858c89;
+
+  --border: rgba(255, 255, 255, 0.09);
+  --separator: rgba(255, 255, 255, 0.09);
+
+  /* The logo green. Needs near-black foreground text — 10.5:1. */
+  --accent: #7cd800;
+  --accent-foreground: #0a1400;
+  --focus: #7cd800;
+  --link: #7cd800;
+
+  --radius: 0.5rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+/* The one decorative flourish: a soft green wash behind page heads. */
+.vx-glow {
+  position: absolute;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(124, 216, 0, 0.13),
+    rgba(124, 216, 0, 0) 62%
+  );
+}
