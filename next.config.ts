@@ -14,6 +14,8 @@ const nextConfig: NextConfig = {
   basePath: `/${repo}`,
   images: { unoptimized: true },
   trailingSlash: true,
+  // Exposed so asset() can prefix /public files that next/image leaves bare.
+  env: { NEXT_PUBLIC_BASE_PATH: `/${repo}` },
 };
 
 export default nextConfig;

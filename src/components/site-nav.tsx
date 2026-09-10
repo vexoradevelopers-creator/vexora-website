@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -16,8 +17,8 @@ export function SiteNav() {
       <div className="mx-auto w-full max-w-[1200px]">
         <div className="flex h-[58px] items-center gap-10 rounded-full border border-border bg-surface pl-4 pr-2.5 lg:h-16 lg:pl-6 lg:pr-3">
           <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="Vexora home">
-            <Image src="/vexora-mark.png" alt="" width={340} height={360} priority className="h-6 w-auto lg:h-[26px]" />
-            <Image src="/vexora-wordmark.png" alt="Vexora" width={1012} height={128} priority className="h-[15px] w-auto lg:h-[17px]" />
+            <Image src={asset("/vexora-mark.png")} alt="" width={340} height={360} priority className="h-6 w-auto lg:h-[26px]" />
+            <Image src={asset("/vexora-wordmark.png")} alt="Vexora" width={1012} height={128} priority className="h-[15px] w-auto lg:h-[17px]" />
           </Link>
 
           <nav className="hidden grow items-center gap-7 lg:flex">

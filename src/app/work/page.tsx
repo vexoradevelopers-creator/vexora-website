@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { asset } from "@/lib/asset";
 import Image from "next/image";
 import { Check, CtaBand, Eyebrow, Rule, Todo, Wrap } from "@/components/ui";
 
@@ -61,7 +62,7 @@ export default function WorkPage() {
 
             <div className="overflow-hidden rounded-2xl border border-border bg-[#0b0d0e]">
               <Image
-                src="/sa-statement.webp"
+                src={asset("/sa-statement.webp")}
                 alt="An audited Statement of Financial Position generated in the Shailesh & Associates system, with the client company anonymised"
                 width={1500}
                 height={895}
@@ -127,7 +128,7 @@ export default function WorkPage() {
         <div className="mt-8 grid gap-5 lg:mt-10 lg:grid-cols-2">
           <article className="overflow-hidden rounded-2xl border border-border bg-surface">
             <Image
-              src="/medicos-prices.webp"
+              src={asset("/medicos-prices.webp")}
               alt="MediCos Nepal product and price-tier management, built by Vexora"
               width={1200}
               height={750}
@@ -167,7 +168,7 @@ export default function WorkPage() {
 
           <article className="overflow-hidden rounded-2xl border border-border bg-surface">
             <Image
-              src="/sortly.webp"
+              src={asset("/sortly.webp")}
               alt="Sortly, a colour-sorting puzzle game built by Vexora"
               width={1400}
               height={788}
