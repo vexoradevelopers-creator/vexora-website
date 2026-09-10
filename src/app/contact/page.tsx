@@ -39,7 +39,7 @@ export default function ContactPage() {
             Tell us what you need built.
           </h1>
           <p className="max-w-[520px] text-pretty text-base leading-relaxed text-muted lg:text-[17px] lg:leading-[1.7]">
-            Write in your own words &mdash; you do not need a specification. One message, a
+            Write in your own words. You do not need a specification. One message, a
             45&#8209;minute call, and a written answer on scope, price and timeline. We
             reply to every enquiry within one working day.
           </p>

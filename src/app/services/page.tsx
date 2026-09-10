@@ -6,7 +6,7 @@ import { services } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Web applications, websites, mobile apps, games and IT consulting — built by Vexora in Chitwan, Nepal.",
+    "Web applications, websites, mobile apps, games and IT consulting, built by Vexora in Chitwan, Nepal.",
 };
 
 const included = [
@@ -32,7 +32,7 @@ export default function ServicesPage() {
             <p className="max-w-[600px] text-pretty text-base leading-relaxed text-muted lg:text-lg">
               We would rather do a short list properly than a long list badly. If your
               project sits outside these five, we will say so and point you somewhere
-              better &mdash; that costs us a job and saves you a bad one.
+              better. That costs us a job and saves you a bad one.
             </p>
           </div>
           <div className="flex flex-col gap-4 rounded-2xl border border-border bg-surface p-6 lg:p-7">
@@ -63,7 +63,7 @@ export default function ServicesPage() {
             >
               <div className="flex flex-col gap-4">
                 <Eyebrow>
-                  {s.n} &mdash; {s.title}
+                  {s.n} · {s.title}
                 </Eyebrow>
                 <h2 className="text-[28px] lg:text-[38px]">{s.tagline}</h2>
                 <p className="text-base leading-relaxed text-muted">{s.body}</p>
@@ -114,7 +114,7 @@ export default function ServicesPage() {
 
       <CtaBand
         title="Still not sure which one you need?"
-        body="Describe the problem in your own words. We will tell you what it actually takes to solve — and if the honest answer is that you do not need us, you will get that instead."
+        body="Describe the problem in your own words. We will tell you what it actually takes to solve, and if the honest answer is that you do not need us, you will get that instead."
         cta="Book a scoping call"
       />
     </>

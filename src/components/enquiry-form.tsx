@@ -46,7 +46,7 @@ export function EnquiryForm({ compact = false }: { compact?: boolean }) {
         <div className="flex size-11 items-center justify-center rounded-full bg-accent/15">
           <Check className="size-5" />
         </div>
-        <h3 className="text-2xl">Thanks — that reached us.</h3>
+        <h3 className="text-2xl">Thanks, that reached us.</h3>
         <p className="text-base leading-relaxed text-muted">
           We reply to every enquiry within one working day. If it is urgent, call us
           rather than waiting on email.
@@ -62,7 +62,7 @@ export function EnquiryForm({ compact = false }: { compact?: boolean }) {
     >
       <h3 className="mb-1 text-[22px]">Start a project</h3>
 
-      {/* Honeypot — hidden from people, tempting to bots. */}
+      {/* Honeypot: hidden from people, tempting to bots. */}
       <div aria-hidden className="absolute -left-[9999px]">
         <label htmlFor="company_website">Company website</label>
         <input id="company_website" name="company_website" tabIndex={-1} autoComplete="off" />
@@ -118,7 +118,7 @@ export function EnquiryForm({ compact = false }: { compact?: boolean }) {
           name="message"
           required
           rows={5}
-          placeholder="You do not need a specification — plain words are fine."
+          placeholder="You do not need a specification. Plain words are fine."
           className={`${field} h-auto py-3 leading-relaxed`}
         />
       </div>

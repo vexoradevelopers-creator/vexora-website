@@ -5,7 +5,7 @@ import { Check, CtaBand, Eyebrow, Rule, Todo, Wrap } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "A workflow application for a chartered accountancy firm, a distribution system for a beauty importer, and Sortly — all built end to end by Vexora.",
+    "A workflow application for a chartered accountancy firm, a distribution system for a beauty importer, and Sortly, all built end to end by Vexora.",
 };
 
 function Slot({ label, hint }: { label: string; hint?: string }) {
@@ -28,7 +28,7 @@ export default function WorkPage() {
             Built to fit the business behind it.
           </h1>
           <p className="text-pretty text-base leading-relaxed text-muted lg:text-lg">
-            Three projects, three different problems &mdash; a workflow application for a
+            Three projects, three different problems: a workflow application for a
             chartered accountancy firm, a distribution system for a beauty importer, and Sortly, a puzzle game we
             built in&#8209;house. Different industries, different problems, and every line
             of all three designed and written by us.
@@ -54,7 +54,7 @@ export default function WorkPage() {
               </div>
               <h2 className="text-[32px] lg:text-[44px]">Shailesh &amp; Associates</h2>
               <p className="text-base leading-relaxed text-muted">
-                The system a chartered accountancy firm runs its audit work on &mdash; from
+                The system a chartered accountancy firm runs its audit work on, from
                 client files through to the finished, formatted statements it signs off.
               </p>
             </div>
@@ -89,7 +89,7 @@ export default function WorkPage() {
               },
               {
                 k: "What we built",
-                v: "A web application shaped around the firm's actual process — one place for the work, and statements generated straight out of it in the exact format ICAN expects, instead of being rebuilt by hand in Word each time.",
+                v: "A web application shaped around the firm's actual process: one place for the work, and statements generated straight out of it in the exact format ICAN expects, instead of being rebuilt by hand in Word each time.",
               },
             ].map((c) => (
               <div
@@ -108,7 +108,7 @@ export default function WorkPage() {
               </span>
               <p className="text-sm leading-relaxed">
                 <Todo>
-                  [FILL THIS IN WITH THE CLIENT — HOURS SAVED PER WEEK, OR A ONE-LINE
+                  [FILL THIS IN WITH THE CLIENT: HOURS SAVED PER WEEK, OR A ONE-LINE
                   QUOTE. ONE REAL NUMBER HERE IS WORTH MORE THAN THE REST OF THIS PAGE.]
                 </Todo>
               </p>
@@ -146,9 +146,9 @@ export default function WorkPage() {
               <h3 className="text-2xl">MediCos Nepal</h3>
               <p className="text-sm leading-relaxed text-muted">
                 A Korean beauty distributor selling through dealers and retailers across
-                Nepal. Distribution is where the money quietly leaks &mdash; wrong prices on
+                Nepal. Distribution is where the money quietly leaks: wrong prices on
                 an invoice, stock expiring in the warehouse, a dealer over their credit
-                limit &mdash; so the system was built around catching each of those before
+                limit. The system was built around catching each of those before
                 it costs anything.
               </p>
               <ul className="flex flex-col gap-2">
@@ -168,7 +168,7 @@ export default function WorkPage() {
           <article className="overflow-hidden rounded-2xl border border-border bg-surface">
             <Image
               src="/sortly.webp"
-              alt="Sortly — a colour-sorting puzzle game built by Vexora"
+              alt="Sortly, a colour-sorting puzzle game built by Vexora"
               width={1400}
               height={788}
               sizes="(max-width: 1024px) 100vw, 580px"
@@ -178,15 +178,15 @@ export default function WorkPage() {
               <span className="inline-flex h-[30px] w-fit items-center rounded-full border border-border bg-background-secondary px-3 text-sm font-medium text-muted">
                 Game
               </span>
-              <h3 className="text-2xl">Sortly &mdash; pour, sort, unwind</h3>
+              <h3 className="text-2xl">Sortly: pour, sort, unwind</h3>
               <p className="text-sm leading-relaxed text-muted">
                 A colour&#8209;sorting puzzle built in&#8209;house. Every level is verified
-                solvable before it ships &mdash; proven, not promised &mdash; and every
+                solvable before it ships, proven rather than promised, and every
                 liquid carries a colour&#8209;blind mark from level one, so the game is
                 playable without relying on hue at all.
               </p>
               <ul className="flex flex-col gap-2">
-                {["Every puzzle solvable — proven, not promised",
+                {["Every puzzle solvable: proven, not promised",
                   "Colour-blind marks on every liquid, from level one",
                   "Eight themes and five kinds of glass",
                   "No timer, no pressure, plays offline"].map((f) => (
@@ -212,7 +212,7 @@ export default function WorkPage() {
           <p className="text-base leading-relaxed text-muted lg:text-[17px]">
             No white&#8209;labelled subcontractors, no templates dressed up as custom work.
             The same people did the scoping calls, the interface design, the code and the
-            handover on all three &mdash; a workflow system, a consumer phone app and a
+            handover on all three: a workflow system, a distribution system and a
             real&#8209;time game engine problem. Those are three genuinely different
             disciplines, and being able to move between them is the reason we can tell you
             honestly which one your project actually needs.
@@ -222,7 +222,7 @@ export default function WorkPage() {
 
       <CtaBand
         title="Be the next one on this page."
-        body="Tell us what the problem is and we will tell you what it takes to solve — scope, price and timeline, in writing, before anything is signed."
+        body="Tell us what the problem is and we will tell you what it takes to solve: scope, price and timeline, in writing, before anything is signed."
       />
     </>
   );

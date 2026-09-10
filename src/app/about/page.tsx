@@ -5,14 +5,14 @@ import { company } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Vexora Developers & Consulting Private Limited — a software studio in Khairahani, Chitwan, Nepal.",
+    "Vexora Developers & Consulting Private Limited, a software studio in Khairahani, Chitwan, Nepal.",
 };
 
 const rules = [
   {
     n: "01",
     title: "Write it down first",
-    body: "Scope, price and dates on paper before any money moves. If it is not written down, it is not agreed — and that protects you more than it protects us.",
+    body: "Scope, price and dates on paper before any money moves. If it is not written down, it is not agreed, and that protects you more than it protects us.",
   },
   {
     n: "02",
@@ -35,7 +35,6 @@ const details: [string, string, boolean][] = [
   ["Legal name", company.legalName, false],
   ["Trading as", company.shortName, false],
   ["Reg. No.", company.regNo, false],
-  ["PAN", company.pan, true],
   ["Incorporated", "[MONTH YEAR]", true],
   ["Registered office", company.address, false],
 ];
@@ -53,8 +52,8 @@ export default function AboutPage() {
             </h1>
             <p className="text-pretty text-base leading-relaxed text-muted lg:text-[17px] lg:leading-[1.7]">
               {company.legalName} is a software studio working across three disciplines
-              that rarely sit together &mdash; business workflow applications, consumer
-              mobile apps and real&#8209;time games. We also consult for businesses trying
+              that rarely sit together: business workflow applications, distribution
+              systems and real&#8209;time games. We also consult for businesses trying
               to decide what to build in the first place.
             </p>
             <p className="text-pretty text-base leading-relaxed text-muted lg:text-[17px] lg:leading-[1.7]">
@@ -65,7 +64,7 @@ export default function AboutPage() {
             </p>
             <p className="text-base leading-relaxed lg:text-[17px]">
               <Todo>
-                [ADD TWO OR THREE SENTENCES ABOUT WHO FOUNDED VEXORA AND WHY — PEOPLE HIRE
+                [ADD TWO OR THREE SENTENCES ABOUT WHO FOUNDED VEXORA AND WHY. PEOPLE HIRE
                 PEOPLE, ESPECIALLY AT THIS STAGE.]
               </Todo>
             </p>
@@ -145,7 +144,7 @@ export default function AboutPage() {
                 </span>
               </div>
               <p className="text-sm leading-relaxed">
-                <Todo>[ONE OR TWO SENTENCES — WHAT THEY BUILD, AND ONE HUMAN DETAIL.]</Todo>
+                <Todo>[ONE OR TWO SENTENCES: WHAT THEY BUILD, AND ONE HUMAN DETAIL.]</Todo>
               </p>
             </div>
           ))}

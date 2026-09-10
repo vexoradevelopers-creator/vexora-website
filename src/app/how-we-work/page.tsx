@@ -42,7 +42,7 @@ export default function HowWeWorkPage() {
               You will know where your project stands. Every week.
             </h1>
             <p className="text-pretty text-base leading-relaxed text-muted lg:text-lg">
-              Software projects rarely fail loudly. They fail quietly &mdash; a scope
+              Software projects rarely fail loudly. They fail quietly: a scope
               nobody wrote down, a month of silence, then a demo that is not what you had
               in your head and a bill that moved. Everything below exists to make both of
               those impossible.
@@ -103,7 +103,7 @@ export default function HowWeWorkPage() {
                 {i === 3 ? (
                   <p className="mt-4 text-sm leading-relaxed">
                     <Todo>
-                      [STATE YOUR SUPPORT TERMS HERE — MONTHLY FEE, RESPONSE TIME, AND WHAT
+                      [STATE YOUR SUPPORT TERMS HERE: MONTHLY FEE, RESPONSE TIME, AND WHAT
                       IS COVERED.]
                     </Todo>
                   </p>
@@ -143,7 +143,7 @@ export default function HowWeWorkPage() {
           <h2 className="text-[28px] lg:text-[38px]">Because they will.</h2>
           <p className="text-base leading-relaxed text-muted">
             Halfway through, you will think of something better. That is normal and usually
-            right &mdash; the problem is never the change itself, it is the change that
+            right. The problem is never the change itself, it is the change that
             quietly appears on the final invoice.
           </p>
           <div className="rounded-2xl border border-accent/25 bg-[linear-gradient(135deg,#151a14,#111314)] p-6">
@@ -168,7 +168,7 @@ export default function HowWeWorkPage() {
             <p className="mt-3 text-sm leading-relaxed">
               <Todo>
                 [WRITE YOUR OWN GUARANTEE HERE. SOMETHING SPECIFIC AND KEEPABLE BEATS
-                SOMETHING GENEROUS AND VAGUE — FOR EXAMPLE, WHAT HAPPENS IF A MILESTONE IS
+                SOMETHING GENEROUS AND VAGUE. FOR EXAMPLE, WHAT HAPPENS IF A MILESTONE IS
                 LATE, OR HOW A CLIENT CAN EXIT MID-PROJECT AND WHAT THEY KEEP.]
               </Todo>
             </p>
@@ -178,7 +178,7 @@ export default function HowWeWorkPage() {
 
       <CtaBand
         title="Start with the call."
-        body="Forty-five minutes, free, and you leave with a written summary and a straight opinion — whether or not anything comes of it."
+        body="Forty-five minutes, free, and you leave with a written summary and a straight opinion, whether or not anything comes of it."
         cta="Book a scoping call"
         note="No pitch deck. No obligation."
       />

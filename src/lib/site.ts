@@ -4,14 +4,27 @@ export const company = {
   legalName: "Vexora Developers & Consulting Private Limited",
   shortName: "Vexora",
   regNo: "402129/83/84",
-  pan: "[YOUR PAN]",
   phone: "+977 9749849725",
   phoneHref: "tel:+9779749849725",
   email: "vexoradevelopers@gmail.com",
   emailHref: "mailto:vexoradevelopers@gmail.com",
   address: "Khairahani-01, Chitwan, Nepal",
-  hours: "[MON–SAT, 10:00–19:00 NPT]",
+  hours: "[MON-SAT, 10:00-19:00 NPT]",
 } as const;
+
+export const socials = [
+  {
+    label: "LinkedIn",
+    // Resolved from the organisation id in the search link you sent.
+    href: "https://www.linkedin.com/company/143674980/",
+    short: "in",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/vexoradeveleopers/",
+    short: "ig",
+  },
+] as const;
 
 export const nav = [
   { href: "/services", label: "Services" },
@@ -101,7 +114,7 @@ export const services = [
       "An admin area your team can run without us",
     ],
     tech: ["React", "Next.js", "Node.js", "PostgreSQL", "AWS"],
-    duration: "[6–12 WEEKS]",
+    duration: "[6-12 WEEKS]",
     price: "[YOUR PRICE]",
   },
   {
@@ -109,16 +122,16 @@ export const services = [
     n: "02",
     title: "Websites & landing pages",
     tagline: "A site that brings in enquiries, not compliments.",
-    body: "Built around one action — the call, the enquiry, the booking — fast on an ordinary phone connection, with a way for you to change the words yourself.",
+    body: "Built around one action: the call, the enquiry, the booking. Fast on an ordinary phone connection, with a way for you to change the words yourself.",
     includes: [
       "Design and build, phone-first",
-      "Copy structure — we help you say it plainly",
+      "Copy structure, so you say it plainly",
       "Enquiry forms that reach your inbox and phone",
       "Search basics, analytics and Google Business setup",
       "An editor for your own text and images",
     ],
     tech: ["Next.js", "Headless CMS", "Analytics", "On-page SEO"],
-    duration: "[2–4 WEEKS]",
+    duration: "[2-4 WEEKS]",
     price: "[YOUR PRICE]",
   },
   {
@@ -134,7 +147,7 @@ export const services = [
       "Developer accounts registered in your name",
     ],
     tech: ["React Native", "Expo", "Play Store", "App Store"],
-    duration: "[8–14 WEEKS]",
+    duration: "[8-14 WEEKS]",
     price: "[YOUR PRICE]",
   },
   {
@@ -142,7 +155,7 @@ export const services = [
     n: "04",
     title: "Games & interactive",
     tagline: "Casual games, and interactive work that isn't a game.",
-    body: "Sortly, our own colour-sorting puzzle, is where we learned to care about frame times, input latency and solvability guarantees — and that discipline shows up in everything else we build.",
+    body: "Sortly, our own colour-sorting puzzle, is where we learned to care about frame times, input latency and solvability guarantees, and that discipline shows up in everything else we build.",
     includes: [
       "Browser and mobile builds",
       "Unity or web-native, whichever suits the piece",
@@ -158,7 +171,7 @@ export const services = [
     n: "05",
     title: "IT consulting & support",
     tagline: "Advice you can act on, and someone to call afterwards.",
-    body: "Not every problem needs a build. Sometimes it needs a decision made properly — which platform, which host, what it will cost to run in year three, whether the thing you already own can be fixed instead of replaced.",
+    body: "Not every problem needs a build. Sometimes it needs a decision made properly: which platform, which host, what it will cost to run in year three, whether the thing you already own can be fixed instead of replaced.",
     includes: [
       "Stack and hosting choices, with realistic budgets",
       "An honest repair-or-replace assessment of what exists",
@@ -184,7 +197,7 @@ export const steps = [
     title: "Written proposal",
     short: "Scope, price and dates on paper before anything is signed.",
     body: "A document you could hand to any other developer and get a comparable quote. If we think the project is a bad idea, that goes on paper too.",
-    chips: ["[3–5 working days]", "Fixed price", "Fixed dates"],
+    chips: ["[3-5 working days]", "Fixed price", "Fixed dates"],
   },
   {
     n: "03",
@@ -223,11 +236,11 @@ export const commitments = [
 export const faqs = [
   {
     q: "How do I know the project will actually land?",
-    a: "Because you can check, every single week. The scope and the price are fixed in writing before you pay anything, and from week one there is a working build you can open and click — no month-long silences ending in a demo that misses. Every repository, domain and account sits in your name throughout, so the work is yours at any point, not just at the end.",
+    a: "Because you can check, every single week. The scope and the price are fixed in writing before you pay anything, and from week one there is a working build you can open and click. No month-long silences ending in a demo that misses. Every repository, domain and account sits in your name throughout, so the work is yours at any point, not just at the end.",
   },
   {
     q: "What does a project cost?",
-    a: "It depends on scope, and we will not pretend otherwise — but you get a fixed number in writing before you commit to anything. The scoping call is free and ends with a realistic range, so you can walk away with a budget even if you never hire us.",
+    a: "It depends on scope, and we will not pretend otherwise, but you get a fixed number in writing before you commit to anything. The scoping call is free and ends with a realistic range, so you can walk away with a budget even if you never hire us.",
   },
   {
     q: "How long does a build take?",
@@ -239,11 +252,11 @@ export const faqs = [
   },
   {
     q: "What happens after launch?",
-    a: "You get a named contact and an agreed response window. Ongoing maintenance — updates, backups, monitoring and small changes — is optional and priced separately, so you are never locked in by default.",
+    a: "You get a named contact and an agreed response window. Ongoing maintenance (updates, backups, monitoring and small changes) is optional and priced separately, so you are never locked in by default.",
   },
   {
     q: "Can we work with you remotely?",
-    a: "Yes. We are based in Chitwan and work with clients wherever they are. The weekly clickable build and the written scope exist precisely so that distance stops mattering — you can see the state of the work without being in the room.",
+    a: "Yes. We are based in Chitwan and work with clients wherever they are. The weekly clickable build and the written scope exist precisely so that distance stops mattering. You can see the state of the work without being in the room.",
   },
 ] as const;
 

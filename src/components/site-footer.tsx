@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { company, nav, services } from "@/lib/site";
-import { Rule, Todo, Wrap } from "./ui";
+import { company, nav, services, socials } from "@/lib/site";
+import { Rule, Wrap } from "./ui";
 
 export function SiteFooter() {
   return (
@@ -13,9 +13,24 @@ export function SiteFooter() {
             <Image src="/vexora-wordmark.png" alt="Vexora" width={1012} height={128} className="h-[19px] w-auto" />
           </Link>
           <p className="max-w-[320px] text-sm leading-relaxed text-muted">
-            {company.legalName} — a software studio in Chitwan building web
+            {company.legalName}. A software studio in Chitwan building web
             applications, websites, mobile apps and games.
           </p>
+          <div className="flex gap-2.5">
+            {socials.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                title={s.label}
+                className="flex size-11 items-center justify-center rounded-full border border-border bg-background-secondary font-mono text-xs text-muted transition hover:border-accent/40 hover:text-accent"
+              >
+                {s.short}
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="flex flex-col gap-3">
@@ -54,8 +69,7 @@ export function SiteFooter() {
 
       <Wrap className="flex flex-wrap items-center justify-between gap-5 py-6 pb-10">
         <span className="text-sm text-faint">
-          © {new Date().getFullYear()} {company.legalName} · Reg. No. {company.regNo} · PAN{" "}
-          <Todo>{company.pan}</Todo>
+          © {new Date().getFullYear()} {company.legalName} · Reg. No. {company.regNo}
         </span>
         <div className="flex gap-6">
           <Link href="/privacy" className="text-sm text-faint hover:text-foreground">

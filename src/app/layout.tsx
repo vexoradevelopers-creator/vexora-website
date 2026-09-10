@@ -29,13 +29,13 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://vexora.com.np"),
   title: {
-    default: "Vexora — web applications, websites, mobile apps and games",
+    default: "Vexora: web applications, websites, mobile apps and games",
     template: "%s · Vexora",
   },
   description:
     "Vexora Developers & Consulting Pvt. Ltd. is a software studio in Chitwan, Nepal. We scope in writing, build in weekly slices you can click, and hand over everything.",
   openGraph: {
-    title: "Vexora — software built to fit your business",
+    title: "Vexora: software built to fit your business",
     description:
       "A software studio in Chitwan, Nepal building web applications, websites, mobile apps and games.",
     siteName: company.shortName,

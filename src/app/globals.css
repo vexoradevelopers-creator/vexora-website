@@ -12,7 +12,7 @@
 /*
  * Vexora theme. Deliberately unlayered: unlayered rules beat anything in
  * @layer theme, so these win over HeroUI's dark defaults without !important.
- * Only base tokens are set — HeroUI derives the rest with color-mix().
+ * Only base tokens are set; HeroUI derives the rest with color-mix().
  */
 :root,
 .dark,
@@ -39,7 +39,7 @@
   --border: rgba(255, 255, 255, 0.09);
   --separator: rgba(255, 255, 255, 0.09);
 
-  /* The logo green. Needs near-black foreground text — 10.5:1. */
+  /* The logo green. Needs near-black foreground text at 10.5:1. */
   --accent: #7cd800;
   --accent-foreground: #0a1400;
   --focus: #7cd800;

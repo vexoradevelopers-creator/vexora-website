@@ -37,7 +37,7 @@ export default function HomePage() {
             Vexora is a software studio that builds web applications, websites, mobile
             apps and games for businesses that have outgrown spreadsheets and templates.
             We scope in writing, build in weekly slices you can click, and hand over
-            everything &mdash; code, accounts and documentation included.
+            everything: code, accounts and documentation included.
           </p>
           <div className="flex w-full flex-col items-stretch gap-3 lg:w-auto lg:flex-row lg:items-center">
             <Link
@@ -79,7 +79,7 @@ export default function HomePage() {
                     Web application
                   </span>
                   <span className="text-[15px]">
-                    MediCos Nepal &mdash; orders, dealer pricing, stock batches and
+                    MediCos Nepal: orders, dealer pricing, stock batches and
                     receivables for a Korean beauty distributor, in one place.
                   </span>
                 </div>
@@ -121,7 +121,7 @@ export default function HomePage() {
           <SectionHead
             eyebrow="Why Vexora exists"
             title="Small businesses keep buying software that doesn't fit them."
-            lead="Not because the tools are bad — because nobody sat down with the business first. Six things we hear constantly, and what we do about each one."
+            lead="Not because the tools are bad, but because nobody sat down with the business first. Six things we hear constantly, and what we do about each one."
           />
           <div className="mt-8 grid gap-5 lg:mt-[52px] lg:grid-cols-3">
             {problems.map((p) => (
@@ -133,7 +133,7 @@ export default function HomePage() {
                 <p className="text-sm leading-relaxed text-muted">{p.problem}</p>
                 <Rule />
                 <p className="text-sm leading-relaxed">
-                  <span className="font-semibold text-accent">With Vexora &mdash;</span>{" "}
+                  <span className="font-semibold text-accent">With Vexora:</span>{" "}
                   {p.answer}
                 </p>
               </article>
@@ -168,7 +168,7 @@ export default function HomePage() {
               >
                 <Eyebrow>
                   {s.n}
-                  {i === 0 ? " — Most requested" : ""}
+                  {i === 0 ? " · Most requested" : ""}
                 </Eyebrow>
                 <h3 className={i === 0 ? "text-[28px]" : "text-2xl"}>{s.title}</h3>
                 <p className="max-w-[560px] text-sm leading-relaxed text-muted">{s.body}</p>
@@ -191,7 +191,7 @@ export default function HomePage() {
               <h3 className="text-2xl text-accent-foreground">Not sure which one you need?</h3>
               <p className="text-sm leading-relaxed text-accent-foreground/75">
                 Describe the problem, not the solution. We will tell you honestly what it
-                takes &mdash; including when the answer is that you do not need us.
+                takes, including when the answer is that you do not need us.
               </p>
               <Link
                 href="/contact"
@@ -215,7 +215,7 @@ export default function HomePage() {
                 Three things we put in writing, every time.
               </h2>
               <p className="text-base leading-relaxed text-muted">
-                Not values on a wall &mdash; clauses in the contract. If we miss one of
+                Not values on a wall. Clauses in the contract. If we miss one of
                 these, you have something to hold us to.
               </p>
             </div>
