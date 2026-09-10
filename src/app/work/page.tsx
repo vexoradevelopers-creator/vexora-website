@@ -54,26 +54,26 @@ export default function WorkPage() {
               </div>
               <h2 className="text-[32px] lg:text-[44px]">Shailesh &amp; Associates</h2>
               <p className="text-base leading-relaxed text-muted">
-                A web design application built for a chartered accountancy firm &mdash; the
-                project that set the way we scope, build and hand over everything since.
+                The system a chartered accountancy firm runs its audit work on &mdash; from
+                client files through to the finished, formatted statements it signs off.
               </p>
             </div>
 
             <div className="overflow-hidden rounded-2xl border border-border bg-[#0b0d0e]">
               <Image
-                src="/sa-dashboard.webp"
-                alt="The Shailesh & Associates workspace, built by Vexora"
-                width={1800}
-                height={672}
+                src="/sa-statement.webp"
+                alt="An audited Statement of Financial Position generated in the Shailesh & Associates system, with the client company anonymised"
+                width={1500}
+                height={895}
                 sizes="(max-width: 1024px) 100vw, 560px"
                 className="block h-auto w-full"
               />
               <div className="flex items-center justify-between gap-4 border-t border-border px-5 py-4">
                 <span className="font-display text-base font-semibold tracking-tight">
-                  Engagement workspace
+                  Audited statement, generated
                 </span>
                 <span className="inline-flex h-[30px] items-center rounded-full border border-border bg-background-secondary px-3 text-sm font-medium text-muted">
-                  Live
+                  Client anonymised
                 </span>
               </div>
             </div>
@@ -89,7 +89,7 @@ export default function WorkPage() {
               },
               {
                 k: "What we built",
-                v: "A web application shaped around the firm's actual process — one place for the work, with status visible to the whole team rather than living in someone's inbox.",
+                v: "A web application shaped around the firm's actual process — one place for the work, and statements generated straight out of it in the exact format ICAN expects, instead of being rebuilt by hand in Word each time.",
               },
             ].map((c) => (
               <div
