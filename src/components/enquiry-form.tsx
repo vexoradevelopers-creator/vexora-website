@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { projectTypes } from "@/lib/site";
+import { submitEnquiry } from "@/lib/supabase";
 import { ArrowRight, Check } from "./ui";
 
 type State = "idle" | "sending" | "sent" | "error";
@@ -23,19 +24,15 @@ export function EnquiryForm({ compact = false }: { compact?: boolean }) {
     setState("sending");
     setError(null);
 
-    const data = Object.fromEntries(new FormData(event.currentTarget).entries());
+    const result = await submitEnquiry(new FormData(event.currentTarget), {
+      projectType: type,
+      sourcePage: pathname,
+    });
 
-    try {
-      const res = await fetch("/api/enquiry", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, project_type: type, source_page: pathname }),
-      });
-      const body = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(body.error ?? "Something went wrong.");
+    if (result.ok) {
       setState("sent");
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong.");
+    } else {
+      setError(result.error);
       setState("error");
     }
   }
