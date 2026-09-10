@@ -5,7 +5,7 @@ import { Check, CtaBand, Eyebrow, Rule, Todo, Wrap } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "A workflow application for a chartered accountancy firm, a mobile app for a beauty brand, and Sortly — all built end to end by Vexora.",
+    "A workflow application for a chartered accountancy firm, a distribution system for a beauty importer, and Sortly — all built end to end by Vexora.",
 };
 
 function Slot({ label, hint }: { label: string; hint?: string }) {
@@ -29,8 +29,8 @@ export default function WorkPage() {
           </h1>
           <p className="text-pretty text-base leading-relaxed text-muted lg:text-lg">
             Three projects, three different problems &mdash; a workflow application for a
-            chartered accountancy firm, a mobile app for a beauty brand, and Sortly, a puzzle game we
-            built in&#8209;house. Different industries, different platforms, and every line
+            chartered accountancy firm, a distribution system for a beauty importer, and Sortly, a puzzle game we
+            built in&#8209;house. Different industries, different problems, and every line
             of all three designed and written by us.
           </p>
         </Wrap>
@@ -121,32 +121,47 @@ export default function WorkPage() {
       <Wrap className="pt-14 lg:pt-[88px]">
         <div className="flex flex-col gap-4">
           <Eyebrow>Also built</Eyebrow>
-          <h2 className="text-[30px] lg:text-[40px]">An app, and a puzzle game.</h2>
+          <h2 className="text-[30px] lg:text-[40px]">A distribution system, and a puzzle game.</h2>
         </div>
 
         <div className="mt-8 grid gap-5 lg:mt-10 lg:grid-cols-2">
           <article className="overflow-hidden rounded-2xl border border-border bg-surface">
-            <Slot label="[THE BEAUTY BRAND APP SCREENSHOT]" hint="One phone screen, centred, on a plain background" />
+            <Image
+              src="/medicos-prices.webp"
+              alt="MediCos Nepal product and price-tier management, built by Vexora"
+              width={1200}
+              height={750}
+              sizes="(max-width: 1024px) 100vw, 580px"
+              className="block h-auto w-full"
+            />
             <div className="flex flex-col gap-3 p-6 lg:p-7">
               <div className="flex flex-wrap gap-2">
                 <span className="inline-flex h-[30px] items-center rounded-full border border-border bg-background-secondary px-3 text-sm font-medium text-muted">
-                  Mobile app
+                  Web application
                 </span>
                 <span className="inline-flex h-[30px] items-center rounded-full border border-border bg-background-secondary px-3 text-sm font-medium text-muted">
-                  Beauty &amp; skincare
+                  Distribution &amp; trade
                 </span>
               </div>
-              <h3 className="text-2xl">
-                <Todo>[BRAND NAME]</Todo> mobile app
-              </h3>
+              <h3 className="text-2xl">MediCos Nepal</h3>
               <p className="text-sm leading-relaxed text-muted">
-                A phone app for a beauty and skincare company &mdash; their catalogue, their
-                customers and their brand, built into something people keep on a home screen
-                instead of bookmarking and forgetting.
+                A Korean beauty distributor selling through dealers and retailers across
+                Nepal. Distribution is where the money quietly leaks &mdash; wrong prices on
+                an invoice, stock expiring in the warehouse, a dealer over their credit
+                limit &mdash; so the system was built around catching each of those before
+                it costs anything.
               </p>
-              <p className="text-sm">
-                <Todo>[WHAT THE APP DOES FOR THEM, AND WHICH PLATFORMS IT RUNS ON]</Todo>
-              </p>
+              <ul className="flex flex-col gap-2">
+                {["Dealer, retailer and MRP price tiers with effective dates and full history",
+                  "Batch tracking with expiry and reorder alerts",
+                  "Receivables ageing, with automatic credit holds",
+                  "Nepali fiscal year and Bikram Sambat dates throughout"].map((f) => (
+                  <li key={f} className="flex items-start gap-2.5 text-sm leading-relaxed text-muted">
+                    <Check className="mt-0.5" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
             </div>
           </article>
 

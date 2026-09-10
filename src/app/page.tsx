@@ -65,10 +65,10 @@ export default function HomePage() {
           <div className="rounded-3xl border border-border bg-[linear-gradient(180deg,#101314,#0b0d0e)] p-2.5 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.9)] lg:p-3.5">
             <div className="overflow-hidden rounded-xl border border-border bg-background-secondary">
               <Image
-                src="/sa-dashboard.webp"
-                alt="The Shailesh & Associates audit workspace, built by Vexora"
-                width={1800}
-                height={672}
+                src="/medicos-overview.webp"
+                alt="The MediCos Nepal distribution dashboard, built by Vexora"
+                width={1600}
+                height={1000}
                 priority
                 sizes="(max-width: 1024px) 100vw, 1170px"
                 className="block h-auto w-full"
@@ -79,8 +79,8 @@ export default function HomePage() {
                     Web application
                   </span>
                   <span className="text-[15px]">
-                    Shailesh &amp; Associates, Chartered Accountants &mdash; the workspace
-                    their audit and compliance work runs on.
+                    MediCos Nepal &mdash; orders, dealer pricing, stock batches and
+                    receivables for a Korean beauty distributor, in one place.
                   </span>
                 </div>
                 <Link
