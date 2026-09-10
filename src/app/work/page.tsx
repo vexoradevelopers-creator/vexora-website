@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { CtaBand, Eyebrow, Rule, Todo, Wrap } from "@/components/ui";
+import { Check, CtaBand, Eyebrow, Rule, Todo, Wrap } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "A workflow application for a chartered accountancy firm, a mobile app for a beauty brand, and a game — all built end to end by Vexora.",
+    "A workflow application for a chartered accountancy firm, a mobile app for a beauty brand, and Sortly — all built end to end by Vexora.",
 };
 
 function Slot({ label, hint }: { label: string; hint?: string }) {
@@ -29,7 +29,7 @@ export default function WorkPage() {
           </h1>
           <p className="text-pretty text-base leading-relaxed text-muted lg:text-lg">
             Three projects, three different problems &mdash; a workflow application for a
-            chartered accountancy firm, a mobile app for a beauty brand, and a game we
+            chartered accountancy firm, a mobile app for a beauty brand, and Sortly, a puzzle game we
             built in&#8209;house. Different industries, different platforms, and every line
             of all three designed and written by us.
           </p>
@@ -121,7 +121,7 @@ export default function WorkPage() {
       <Wrap className="pt-14 lg:pt-[88px]">
         <div className="flex flex-col gap-4">
           <Eyebrow>Also built</Eyebrow>
-          <h2 className="text-[30px] lg:text-[40px]">An app, and a game.</h2>
+          <h2 className="text-[30px] lg:text-[40px]">An app, and a puzzle game.</h2>
         </div>
 
         <div className="mt-8 grid gap-5 lg:mt-10 lg:grid-cols-2">
@@ -151,21 +151,36 @@ export default function WorkPage() {
           </article>
 
           <article className="overflow-hidden rounded-2xl border border-border bg-surface">
-            <Slot label="[THE GAME SCREENSHOT]" hint="A single strong frame beats a collage" />
+            <Image
+              src="/sortly.webp"
+              alt="Sortly — a colour-sorting puzzle game built by Vexora"
+              width={1400}
+              height={788}
+              sizes="(max-width: 1024px) 100vw, 580px"
+              className="block h-auto w-full"
+            />
             <div className="flex flex-col gap-3 p-6 lg:p-7">
               <span className="inline-flex h-[30px] w-fit items-center rounded-full border border-border bg-background-secondary px-3 text-sm font-medium text-muted">
                 Game
               </span>
-              <h3 className="text-2xl">Casual game</h3>
+              <h3 className="text-2xl">Sortly &mdash; pour, sort, unwind</h3>
               <p className="text-sm leading-relaxed text-muted">
-                Built in&#8209;house for mobile and browser. This is where we learned to care
-                about frame times, input latency and the difference between an interface
-                that works and one that feels quick &mdash; habits that carry straight into
-                the client work.
+                A colour&#8209;sorting puzzle built in&#8209;house. Every level is verified
+                solvable before it ships &mdash; proven, not promised &mdash; and every
+                liquid carries a colour&#8209;blind mark from level one, so the game is
+                playable without relying on hue at all.
               </p>
-              <p className="text-sm">
-                <Todo>[NAME THE GAME AND THE PLATFORM IT RUNS ON]</Todo>
-              </p>
+              <ul className="flex flex-col gap-2">
+                {["Every puzzle solvable — proven, not promised",
+                  "Colour-blind marks on every liquid, from level one",
+                  "Eight themes and five kinds of glass",
+                  "No timer, no pressure, plays offline"].map((f) => (
+                  <li key={f} className="flex items-start gap-2.5 text-sm leading-relaxed text-muted">
+                    <Check className="mt-0.5" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
             </div>
           </article>
         </div>

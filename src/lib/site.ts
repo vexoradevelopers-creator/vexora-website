@@ -142,7 +142,7 @@ export const services = [
     n: "04",
     title: "Games & interactive",
     tagline: "Casual games, and interactive work that isn't a game.",
-    body: "Games are where we learned to care about frame times, input latency and release pipelines — and that discipline shows up in everything else we build.",
+    body: "Sortly, our own colour-sorting puzzle, is where we learned to care about frame times, input latency and solvability guarantees — and that discipline shows up in everything else we build.",
     includes: [
       "Browser and mobile builds",
       "Unity or web-native, whichever suits the piece",
