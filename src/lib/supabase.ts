@@ -57,7 +57,9 @@ export async function submitEnquiry(
   });
 
   if (error) {
-    console.error("enquiry insert failed:", error.message);
+    // P0001 is our own rate-limit trigger; its message is written for people.
+    if (error.code === "P0001") return { ok: false, error: error.message };
+    console.error("enquiry insert failed:", error.code);
     return { ok: false, error: "We could not save that. Please email or call us instead." };
   }
   return { ok: true };

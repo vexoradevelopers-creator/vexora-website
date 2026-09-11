@@ -3,16 +3,43 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { company, nav } from "@/lib/site";
 import { ArrowRight } from "./ui";
 
 export function SiteNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+
+  // Tuck the bar away while scrolling down, bring it back on the first
+  // upward nudge. Never hides while the mobile menu is open or near the top.
+  useEffect(() => {
+    let last = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      const delta = y - last;
+      if (y < 80) setHidden(false);
+      else if (delta > 6) setHidden(true);
+      else if (delta < -6) setHidden(false);
+      last = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Close the mobile menu whenever the route changes.
+  const [openedOn, setOpenedOn] = useState(pathname);
+  if (open && openedOn !== pathname) {
+    setOpen(false);
+    setOpenedOn(pathname);
+  }
 
   return (
-    <header className="sticky top-0 z-50 px-4 pt-3.5 lg:px-6 lg:pt-[22px]">
+    <header
+      className="sticky top-0 z-50 px-4 pt-3.5 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:px-6 lg:pt-[22px]"
+      style={{ transform: hidden && !open ? "translateY(calc(-100% - 8px))" : "none" }}
+    >
       <div className="mx-auto w-full max-w-[1200px]">
         <div className="flex h-[58px] items-center gap-10 rounded-full border border-border bg-surface/80 pl-4 pr-2.5 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.9)] backdrop-blur-xl lg:h-16 lg:pl-6 lg:pr-3">
           <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="Vexora home">
@@ -52,7 +79,10 @@ export function SiteNav() {
 
           <button
             type="button"
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => {
+              setOpenedOn(pathname);
+              setOpen((v) => !v);
+            }}
             aria-expanded={open}
             aria-label={open ? "Close menu" : "Open menu"}
             className={`ml-auto flex size-11 items-center justify-center rounded-full transition lg:hidden ${

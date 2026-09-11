@@ -103,13 +103,6 @@ export function ArrowRight({ className = "" }: { className?: string }) {
   );
 }
 
-/** Bracketed content the client still has to supply. */
-export function Todo({ children }: { children: ReactNode }) {
-  return (
-    <span className="font-mono text-[0.9em] tracking-wide text-accent">{children}</span>
-  );
-}
-
 export function CtaBand({
   title,
   body,
