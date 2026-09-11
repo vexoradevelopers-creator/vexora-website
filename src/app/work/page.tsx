@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { PricesMock } from "@/components/prices-mock";
 import { SortlyMock } from "@/components/sortly-mock";
 import { StatementMock } from "@/components/statement-mock";
 import { Check, CtaBand, Eyebrow, Rule, Wrap } from "@/components/ui";
@@ -145,14 +145,7 @@ export default function WorkPage() {
 
         <div data-reveal="stagger" className="mt-8 grid gap-5 lg:mt-10 lg:grid-cols-2">
           <article className="vx-card overflow-hidden rounded-2xl border border-border bg-surface">
-            <Image
-              src="/medicos-prices.webp"
-              alt="MediCos Nepal product and price-tier management, built by Vexora"
-              width={1200}
-              height={750}
-              sizes="(max-width: 1024px) 100vw, 580px"
-              className="block h-auto w-full"
-            />
+            <PricesMock />
             <div className="flex flex-col gap-3 p-6 lg:p-7">
               <div className="flex flex-wrap gap-2">
                 <span className="inline-flex h-[30px] items-center rounded-full border border-border bg-background-secondary px-3 text-sm font-medium text-muted">
