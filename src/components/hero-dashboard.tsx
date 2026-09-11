@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMock } from "./use-mock";
 import { DashSidebar, Icon, amber, coral, green, teal } from "./dash-parts";
 
@@ -56,19 +56,34 @@ function lakh(n: number) {
   return `${rest},${last}`;
 }
 
-function CountUp({ value, prefix = "", delay = 0, run }: { value: number; prefix?: string; delay?: number; run: boolean }) {
+function CountUp({
+  value,
+  prefix = "",
+  delay = 0,
+  dur = 2200,
+  run,
+}: {
+  value: number;
+  prefix?: string;
+  delay?: number;
+  dur?: number;
+  run: boolean;
+}) {
   const [n, setN] = useState(0);
+  const from = useRef(0);
   useEffect(() => {
     if (!run) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const a = from.current;
     let raf = 0;
     let start = 0;
-    const dur = 1400;
     const tick = (t: number) => {
       if (!start) start = t;
       const p = reduced ? 1 : Math.min(1, (t - start) / dur);
-      const e = 1 - Math.pow(1 - p, 4);
-      setN(value * e);
+      const e = 1 - Math.pow(1 - p, 5);
+      const v = a + (value - a) * e;
+      from.current = v;
+      setN(v);
       if (p < 1) raf = requestAnimationFrame(tick);
     };
     const id = window.setTimeout(() => (raf = requestAnimationFrame(tick)), reduced ? 0 : delay);
@@ -76,7 +91,7 @@ function CountUp({ value, prefix = "", delay = 0, run }: { value: number; prefix
       window.clearTimeout(id);
       cancelAnimationFrame(raf);
     };
-  }, [value, delay, run]);
+  }, [value, delay, dur, run]);
   return (
     <>
       {prefix}
@@ -87,6 +102,23 @@ function CountUp({ value, prefix = "", delay = 0, run }: { value: number; prefix
 
 export function HeroDashboard() {
   const { ref, armed } = useMock(W);
+  // After the entrance the screen keeps living: an invoice lands every few
+  // seconds, sales tick up and the card glows for a moment.
+  const [invoices, setInvoices] = useState(0);
+  const [flash, setFlash] = useState(false);
+  useEffect(() => {
+    if (!armed || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let flashOff = 0;
+    const id = window.setInterval(() => {
+      setInvoices((n) => n + 1);
+      setFlash(true);
+      flashOff = window.setTimeout(() => setFlash(false), 1200);
+    }, 5200);
+    return () => {
+      window.clearInterval(id);
+      window.clearTimeout(flashOff);
+    };
+  }, [armed]);
 
   return (
     <div
@@ -140,23 +172,33 @@ export function HeroDashboard() {
               {stats.map((s, i) => (
                 <div
                   key={s.k}
-                  className="vx-dash-in rounded-lg border border-[#e4e9ed] bg-white px-4 py-3.5"
-                  style={{ animationDelay: `${0.45 + i * 0.07}s` }}
+                  className="vx-dash-in rounded-lg border bg-white px-4 py-3.5 transition-[border-color,box-shadow] duration-700"
+                  style={{
+                    animationDelay: `${0.5 + i * 0.11}s`,
+                    borderColor: i === 0 && flash ? teal : "#e4e9ed",
+                    boxShadow: i === 0 && flash ? `0 0 0 3px ${teal}1f, 0 10px 24px -14px ${teal}80` : "none",
+                  }}
                 >
                   <div className="text-[8.5px] font-semibold uppercase tracking-[0.12em] text-[#8a949c]">
                     {s.k}
                   </div>
                   <div className="mt-2 text-[19px] font-semibold tabular-nums tracking-tight" style={{ color: s.color }}>
-                    <CountUp value={s.v} prefix={s.prefix} delay={600 + i * 70} run={armed} />
+                    <CountUp
+                      value={i === 0 ? s.v + invoices * 2400 : s.v}
+                      prefix={s.prefix}
+                      delay={invoices ? 0 : 750 + i * 110}
+                      dur={invoices ? 900 : 2200}
+                      run={armed}
+                    />
                   </div>
-                  <div className="mt-1 text-[9px] text-[#6d777f]">{s.sub}</div>
+                  <div className="mt-1 text-[9px] text-[#6d777f]">{i === 0 ? `${17 + invoices} invoices` : s.sub}</div>
                 </div>
               ))}
             </div>
 
             {/* chart + pipeline */}
             <div className="grid grid-cols-[1fr_290px] gap-3.5">
-              <div className="vx-dash-in rounded-lg border border-[#e4e9ed] bg-white p-4" style={{ animationDelay: "0.75s" }}>
+              <div className="vx-dash-in rounded-lg border border-[#e4e9ed] bg-white p-4" style={{ animationDelay: "1.15s" }}>
                 <div className="flex items-center justify-between">
                   <span className="text-[11.5px] font-semibold">Sales, last 30 days</span>
                   <span className="text-[9.5px] font-semibold" style={{ color: teal }}>
@@ -165,7 +207,7 @@ export function HeroDashboard() {
                 </div>
                 <div className="mt-2 flex items-baseline gap-2.5">
                   <span className="text-[22px] font-semibold tabular-nums tracking-tight">
-                    <CountUp value={2846300} prefix="Rs " delay={800} run={armed} />
+                    <CountUp value={2846300 + invoices * 2400} prefix="Rs " delay={invoices ? 0 : 1300} dur={invoices ? 900 : 2400} run={armed} />
                   </span>
                   <span className="text-[9.5px] font-semibold" style={{ color: green }}>
                     +12% vs Shrawan
@@ -179,7 +221,7 @@ export function HeroDashboard() {
                       style={{
                         height: `${b}%`,
                         background: i === bars.length - 1 ? coral : "#8fcfd8",
-                        animationDelay: `${0.9 + i * 0.03}s`,
+                        animationDelay: `${1.45 + i * 0.05}s`,
                       }}
                     />
                   ))}
@@ -193,7 +235,7 @@ export function HeroDashboard() {
                 </div>
               </div>
 
-              <div className="vx-dash-in rounded-lg border border-[#e4e9ed] bg-white p-4" style={{ animationDelay: "0.85s" }}>
+              <div className="vx-dash-in rounded-lg border border-[#e4e9ed] bg-white p-4" style={{ animationDelay: "1.3s" }}>
                 <div className="flex items-center justify-between">
                   <span className="text-[11.5px] font-semibold">Orders in pipeline</span>
                   <span className="text-[9.5px] font-semibold" style={{ color: teal }}>
@@ -207,7 +249,7 @@ export function HeroDashboard() {
                       <span className="h-[5px] overflow-hidden rounded-full bg-[#eceff2]">
                         <span
                           className="vx-dash-fill block h-full origin-left rounded-full"
-                          style={{ width: `${p.w}%`, background: p.c, animationDelay: `${1.1 + i * 0.08}s` }}
+                          style={{ width: `${p.w}%`, background: p.c, animationDelay: `${1.9 + i * 0.12}s` }}
                         />
                       </span>
                       <span className="text-right text-[9.5px] font-semibold tabular-nums">{p.n}</span>
@@ -232,7 +274,7 @@ export function HeroDashboard() {
 
             {/* dealers + attention */}
             <div className="grid grow grid-cols-[1fr_290px] gap-3.5">
-              <div className="vx-dash-in rounded-lg border border-[#e4e9ed] bg-white p-4" style={{ animationDelay: "0.95s" }}>
+              <div className="vx-dash-in rounded-lg border border-[#e4e9ed] bg-white p-4" style={{ animationDelay: "1.5s" }}>
                 <div className="flex items-center justify-between">
                   <span className="text-[11.5px] font-semibold">Top dealers this month</span>
                   <span className="text-[9.5px] font-semibold" style={{ color: teal }}>
@@ -250,7 +292,7 @@ export function HeroDashboard() {
                   <div
                     key={n}
                     className="vx-dash-in grid grid-cols-[1.6fr_0.6fr_0.9fr_0.9fr_1.1fr] items-center border-b border-[#eef1f4] py-[7px] text-[10px] tabular-nums"
-                    style={{ animationDelay: `${1.2 + i * 0.09}s` }}
+                    style={{ animationDelay: `${2.0 + i * 0.14}s` }}
                   >
                     <span className="font-semibold">{n}</span>
                     <span className="text-right">{o}</span>
@@ -268,14 +310,14 @@ export function HeroDashboard() {
                 ))}
               </div>
 
-              <div className="vx-dash-in rounded-lg border border-[#e4e9ed] bg-white p-4" style={{ animationDelay: "1.05s" }}>
+              <div className="vx-dash-in rounded-lg border border-[#e4e9ed] bg-white p-4" style={{ animationDelay: "1.65s" }}>
                 <span className="text-[11.5px] font-semibold">Needs attention</span>
                 <div className="mt-2.5 flex flex-col gap-2">
                   {attention.map((a, i) => (
                     <div
                       key={a.t}
                       className="vx-dash-slide flex items-center gap-2 rounded-md px-2.5 py-2 text-[9.5px] font-medium leading-[1.3]"
-                      style={{ background: a.bg, color: a.c, animationDelay: `${1.3 + i * 0.1}s` }}
+                      style={{ background: a.bg, color: a.c, animationDelay: `${2.3 + i * 0.16}s` }}
                     >
                       <Icon name={a.icon} className="size-[12px] shrink-0" />
                       <span className="grow">{a.t}</span>

@@ -85,7 +85,7 @@ h4 {
 :root {
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --dur-fast: 0.25s;
-  --dur: 0.7s;
+  --dur: 0.9s;
 }
 
 html {
@@ -96,7 +96,7 @@ html {
    data-reveal="stagger" cascades the direct children instead. */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(28px);
   transition:
     opacity var(--dur) var(--ease-out),
     transform var(--dur) var(--ease-out);
@@ -113,7 +113,7 @@ html {
 }
 [data-reveal="stagger"] > * {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(28px);
   transition:
     opacity var(--dur) var(--ease-out),
     transform var(--dur) var(--ease-out);
@@ -122,14 +122,14 @@ html {
   opacity: 1;
   transform: none;
 }
-[data-reveal="stagger"] > :nth-child(1) { transition-delay: 0s; }
-[data-reveal="stagger"] > :nth-child(2) { transition-delay: 0.08s; }
-[data-reveal="stagger"] > :nth-child(3) { transition-delay: 0.16s; }
-[data-reveal="stagger"] > :nth-child(4) { transition-delay: 0.24s; }
-[data-reveal="stagger"] > :nth-child(5) { transition-delay: 0.32s; }
-[data-reveal="stagger"] > :nth-child(6) { transition-delay: 0.4s; }
-[data-reveal="stagger"] > :nth-child(7) { transition-delay: 0.48s; }
-[data-reveal="stagger"] > :nth-child(n + 8) { transition-delay: 0.56s; }
+[data-reveal="stagger"] > :nth-child(1) { transition-delay: 0.0s; }
+[data-reveal="stagger"] > :nth-child(2) { transition-delay: 0.1s; }
+[data-reveal="stagger"] > :nth-child(3) { transition-delay: 0.2s; }
+[data-reveal="stagger"] > :nth-child(4) { transition-delay: 0.3s; }
+[data-reveal="stagger"] > :nth-child(5) { transition-delay: 0.4s; }
+[data-reveal="stagger"] > :nth-child(6) { transition-delay: 0.5s; }
+[data-reveal="stagger"] > :nth-child(7) { transition-delay: 0.6s; }
+[data-reveal="stagger"] > :nth-child(n + 8) { transition-delay: 0.7s; }
 
 /* Hero entrance on first paint: no observer, so it never waits on JS. */
 @keyframes vx-rise {
@@ -145,8 +145,8 @@ html {
   }
 }
 .vx-rise {
-  animation: vx-rise 0.9s var(--ease-out) both;
-  animation-delay: calc(var(--i, 0) * 0.11s);
+  animation: vx-rise 1.1s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 0.13s);
 }
 
 /* Inner-page heroes: direct children rise in sequence. */
@@ -168,7 +168,42 @@ html {
   }
 }
 .vx-frame {
-  animation: vx-frame 1.1s var(--ease-out) 0.35s both;
+  position: relative;
+  animation: vx-frame 1.4s var(--ease-out) 0.45s both;
+}
+/* A slow light travels the frame's edge. */
+@property --vx-a {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes vx-ring {
+  to {
+    --vx-a: 360deg;
+  }
+}
+.vx-frame::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--vx-a),
+    transparent 0deg,
+    transparent 250deg,
+    rgba(124, 216, 0, 0.55) 300deg,
+    rgba(124, 216, 0, 0.9) 320deg,
+    rgba(124, 216, 0, 0.55) 340deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: vx-ring 9s linear 1.6s infinite;
 }
 
 /* Route change: the new page fades up. */
@@ -341,6 +376,7 @@ details[open] > :not(summary) {
   .vx-rise,
   .vx-hero > *,
   .vx-frame,
+  .vx-frame::before,
   .vx-page,
   .vx-glow-breathe,
   .vx-drop,
@@ -370,8 +406,18 @@ details[open] > :not(summary) {
 .vx-dash {
   --s: tan(atan2(100cqw, 1120px));
 }
+@keyframes vx-dash-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
 .vx-dash-in {
-  animation: vx-fade 0.6s var(--ease-out) both;
+  animation: vx-dash-in 1s var(--ease-out) both;
 }
 @keyframes vx-dash-bar {
   from {
@@ -382,7 +428,7 @@ details[open] > :not(summary) {
   }
 }
 .vx-dash-bar {
-  animation: vx-dash-bar 0.7s var(--ease-out) both;
+  animation: vx-dash-bar 1.2s cubic-bezier(0.34, 1.1, 0.64, 1) both;
 }
 @keyframes vx-dash-fill {
   from {
@@ -393,7 +439,7 @@ details[open] > :not(summary) {
   }
 }
 .vx-dash-fill {
-  animation: vx-dash-fill 0.9s var(--ease-out) both;
+  animation: vx-dash-fill 1.4s var(--ease-out) both;
 }
 @keyframes vx-dash-slide {
   from {
@@ -406,7 +452,7 @@ details[open] > :not(summary) {
   }
 }
 .vx-dash-slide {
-  animation: vx-dash-slide 0.55s var(--ease-out) both;
+  animation: vx-dash-slide 0.9s var(--ease-out) both;
 }
 @keyframes vx-dash-nav {
   from {
@@ -419,7 +465,7 @@ details[open] > :not(summary) {
   }
 }
 .vx-dash-nav {
-  animation: vx-dash-nav 0.45s var(--ease-out) both;
+  animation: vx-dash-nav 0.7s var(--ease-out) both;
 }
 @keyframes vx-dash-dot {
   0%,
@@ -431,7 +477,7 @@ details[open] > :not(summary) {
   }
 }
 .vx-dash-dot {
-  animation: vx-dash-dot 2.4s ease-out 2s infinite;
+  animation: vx-dash-dot 2.6s ease-out 3.2s infinite;
 }
 @media (prefers-reduced-motion: reduce) {
   .vx-dash-in,
@@ -491,7 +537,7 @@ details[open] > :not(summary) {
 }
 
 /* ---------------------------------------------------------------------------
- * Sortly mock: one 8s loop. Pour A (tube 3 → 2) lands at 30%, pour B
+ * Sortly mock: one 6.4s loop. Pour A (tube 3 → 2) lands at 30%, pour B
  * (tube 1 → 2) at 70%, then the board fades to the next level.
  * ------------------------------------------------------------------------- */
 .vx-sortly-stars {
@@ -535,7 +581,7 @@ details[open] > :not(summary) {
   }
 }
 .vx-sortly-board {
-  animation: vx-sortly-board 8s linear infinite;
+  animation: vx-sortly-board 6.4s linear infinite;
 }
 @keyframes vx-sortly-tilt-l {
   0%,
@@ -570,10 +616,10 @@ details[open] > :not(summary) {
   }
 }
 .vx-sortly-tilt-l {
-  animation: vx-sortly-tilt-l 8s var(--ease-out) infinite;
+  animation: vx-sortly-tilt-l 6.4s var(--ease-out) infinite;
 }
 .vx-sortly-tilt-r {
-  animation: vx-sortly-tilt-r 8s var(--ease-out) infinite;
+  animation: vx-sortly-tilt-r 6.4s var(--ease-out) infinite;
 }
 @keyframes vx-sortly-out-a {
   0%,
@@ -615,10 +661,10 @@ details[open] > :not(summary) {
     height: 28px;
   }
 }
-.vx-sortly-out-a { animation: vx-sortly-out-a 8s linear infinite; }
-.vx-sortly-in-a { animation: vx-sortly-in-a 8s linear infinite; }
-.vx-sortly-out-b { animation: vx-sortly-out-b 8s linear infinite; }
-.vx-sortly-in-b { animation: vx-sortly-in-b 8s linear infinite; }
+.vx-sortly-out-a { animation: vx-sortly-out-a 6.4s linear infinite; }
+.vx-sortly-in-a { animation: vx-sortly-in-a 6.4s linear infinite; }
+.vx-sortly-out-b { animation: vx-sortly-out-b 6.4s linear infinite; }
+.vx-sortly-in-b { animation: vx-sortly-in-b 6.4s linear infinite; }
 @keyframes vx-sortly-stream-a {
   0%,
   22% {
@@ -649,11 +695,11 @@ details[open] > :not(summary) {
 }
 .vx-sortly-stream-a {
   transform-origin: top;
-  animation: vx-sortly-stream-a 8s linear infinite;
+  animation: vx-sortly-stream-a 6.4s linear infinite;
 }
 .vx-sortly-stream-b {
   transform-origin: top;
-  animation: vx-sortly-stream-b 8s linear infinite;
+  animation: vx-sortly-stream-b 6.4s linear infinite;
 }
 
 /* Engagement flow strip on the work page: a pulse travels the line and each

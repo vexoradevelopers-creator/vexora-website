@@ -10,7 +10,7 @@ import { useMock } from "./use-mock";
  */
 const W = 1000;
 const H = 563;
-const LOOP = 8000;
+const LOOP = 6400;
 
 const ink: Record<string, [string, string]> = {
   y: ["#f2c53d", "△"],

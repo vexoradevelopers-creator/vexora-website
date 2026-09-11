@@ -83,7 +83,7 @@ export function DashSidebar({ active }: { active: string }) {
             key={n}
             className="vx-dash-nav flex h-[26px] items-center gap-2.5 rounded-md px-2.5 text-[11.5px]"
             style={{
-              animationDelay: `${0.5 + i * 0.04}s`,
+              animationDelay: `${0.45 + i * 0.06}s`,
               background: n === active ? "#e3f4f6" : "transparent",
               color: n === active ? teal : "#3c464e",
               fontWeight: n === active ? 600 : 500,
