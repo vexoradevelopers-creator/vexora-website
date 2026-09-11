@@ -4,11 +4,11 @@ import { useMock } from "./use-mock";
 
 /**
  * The Shailesh & Associates audited-statement screen, rebuilt in HTML. Fixed
- * 900x730 layout scaled to its container. The statement rows appear in order,
+ * 900x760 layout scaled to its container. The statement rows appear in order,
  * as if generated, then a "balanced" check lands once both totals agree.
  */
 const W = 900;
-const H = 730;
+const H = 760;
 
 type Row = [label: string, note: string, cur: string, prev: string, kind: "h" | "r" | "t" | "T"];
 
@@ -55,6 +55,28 @@ const ROW_START = 0.9;
 const ROW_STEP = 0.055;
 const DONE = ROW_START + rows.length * ROW_STEP + 0.3;
 
+/** The firm's mark: a navy S and an A whose left stroke is the orange wedge. */
+function SaLogo({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 64 64" className={className} aria-hidden>
+      <text
+        x="0"
+        y="53"
+        fontFamily="'Arial Black', 'Segoe UI Black', Arial, sans-serif"
+        fontWeight="900"
+        fontSize="50"
+        fill="#1b2a5b"
+      >
+        S
+      </text>
+      {/* right leg + crossbar */}
+      <path d="M46 9h7l10 44h-9l-2.6-10.5h-6.9l2.4-8h2.4L46 17z" fill="#1b2a5b" />
+      {/* left stroke */}
+      <path d="M46 9h7L39 53h-9z" fill="#e5472b" />
+    </svg>
+  );
+}
+
 export function StatementMock() {
   const { ref, armed } = useMock(W);
 
@@ -79,9 +101,7 @@ export function StatementMock() {
             ))}
           </span>
           <span className="flex items-center gap-2.5">
-            <span className="flex size-[24px] items-center justify-center rounded-md bg-[#1d4f91] text-[10px] font-extrabold tracking-tight text-white">
-              SA
-            </span>
+            <SaLogo className="size-[26px]" />
             <span className="flex flex-col gap-[3px]">
               <span className="text-[10.5px] font-bold leading-none tracking-tight">Shailesh &amp; Associates</span>
               <span className="text-[6.5px] font-semibold leading-none tracking-[0.16em] text-[#6d777f]">CHARTERED ACCOUNTANTS</span>
@@ -145,7 +165,9 @@ export function StatementMock() {
               style={{ animationDelay: "0.4s" }}
             >
               <div className="text-center">
-                <div className="text-[13px] font-bold tracking-tight">Statement of Financial Position</div>
+                <div className="text-[13.5px] font-bold tracking-tight">Manakamana Steel Udhyog Pvt. Ltd.</div>
+                <div className="text-[12px] font-bold tracking-tight">Bharatpur-11</div>
+                <div className="mt-[3px] text-[12px] font-bold tracking-tight">Statement of Financial Position</div>
                 <div className="mt-[2px] text-[9.5px] font-semibold text-[#333]">As at 32nd Ashadh 2083</div>
               </div>
               <div className="mt-3 flex items-end justify-between text-[8px] leading-tight text-[#555]">
@@ -213,7 +235,11 @@ export function StatementMock() {
                   })}
                 </tbody>
               </table>
-              <div className="mt-2.5 text-[8px] italic text-[#444]">The notes are an integral part of these financial statements.</div>
+              <div className="mt-2.5 text-[8px] font-semibold leading-[1.6] text-[#333]">
+                The notes are an integral part of these financial statements.
+                <br />
+                This is the statement of position referred to in our report of even date.
+              </div>
             </div>
 
             {/* generating → balanced */}
