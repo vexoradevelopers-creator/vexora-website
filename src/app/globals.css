@@ -443,3 +443,283 @@ details[open] > :not(summary) {
     animation: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+ * Statement mock: rows land one after another, then the status flips from
+ * "generating" to "balanced".
+ * ------------------------------------------------------------------------- */
+.vx-stmt-row {
+  animation: vx-fade 0.35s var(--ease-out) both;
+}
+@keyframes vx-stmt-hide {
+  to {
+    opacity: 0;
+    width: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+}
+@keyframes vx-stmt-show {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes vx-stmt-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.vx-stmt-status {
+  animation: vx-fade 0.4s var(--ease-out) 0.7s both;
+}
+.vx-stmt-spin {
+  animation:
+    vx-stmt-spin 0.8s linear infinite,
+    vx-stmt-hide 0.01s linear var(--done) forwards;
+}
+.vx-stmt-gen {
+  animation: vx-stmt-hide 0.01s linear var(--done) forwards;
+}
+.vx-stmt-ok {
+  opacity: 0;
+  animation: vx-stmt-show 0.4s var(--ease-out) var(--done) forwards;
+}
+
+/* ---------------------------------------------------------------------------
+ * Sortly mock: one 8s loop. Pour A (tube 3 → 2) lands at 30%, pour B
+ * (tube 1 → 2) at 70%, then the board fades to the next level.
+ * ------------------------------------------------------------------------- */
+.vx-sortly-stars {
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 18%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 28% 70%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 44% 34%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 58% 82%, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(1.5px 1.5px at 66% 14%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 82% 60%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 91% 26%, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1px 1px at 8% 88%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1.5px 1.5px at 36% 8%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 75% 92%, rgba(255, 255, 255, 0.45), transparent);
+  animation: vx-sortly-twinkle 5s ease-in-out infinite;
+}
+@keyframes vx-sortly-twinkle {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes vx-sortly-board {
+  0% {
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  94% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.vx-sortly-board {
+  animation: vx-sortly-board 8s linear infinite;
+}
+@keyframes vx-sortly-tilt-l {
+  0%,
+  14% {
+    transform: none;
+  }
+  22% {
+    transform: translate(-40px, -58px) rotate(-46deg);
+  }
+  34% {
+    transform: translate(-40px, -58px) rotate(-46deg);
+  }
+  42%,
+  100% {
+    transform: none;
+  }
+}
+@keyframes vx-sortly-tilt-r {
+  0%,
+  54% {
+    transform: none;
+  }
+  62% {
+    transform: translate(40px, -58px) rotate(46deg);
+  }
+  74% {
+    transform: translate(40px, -58px) rotate(46deg);
+  }
+  82%,
+  100% {
+    transform: none;
+  }
+}
+.vx-sortly-tilt-l {
+  animation: vx-sortly-tilt-l 8s var(--ease-out) infinite;
+}
+.vx-sortly-tilt-r {
+  animation: vx-sortly-tilt-r 8s var(--ease-out) infinite;
+}
+@keyframes vx-sortly-out-a {
+  0%,
+  23% {
+    height: 28px;
+  }
+  31%,
+  100% {
+    height: 0;
+  }
+}
+@keyframes vx-sortly-in-a {
+  0%,
+  23% {
+    height: 0;
+  }
+  31%,
+  100% {
+    height: 28px;
+  }
+}
+@keyframes vx-sortly-out-b {
+  0%,
+  63% {
+    height: 28px;
+  }
+  71%,
+  100% {
+    height: 0;
+  }
+}
+@keyframes vx-sortly-in-b {
+  0%,
+  63% {
+    height: 0;
+  }
+  71%,
+  100% {
+    height: 28px;
+  }
+}
+.vx-sortly-out-a { animation: vx-sortly-out-a 8s linear infinite; }
+.vx-sortly-in-a { animation: vx-sortly-in-a 8s linear infinite; }
+.vx-sortly-out-b { animation: vx-sortly-out-b 8s linear infinite; }
+.vx-sortly-in-b { animation: vx-sortly-in-b 8s linear infinite; }
+@keyframes vx-sortly-stream-a {
+  0%,
+  22% {
+    transform: translateX(-50%) scaleY(0);
+  }
+  24%,
+  30% {
+    transform: translateX(-50%) scaleY(1);
+  }
+  32%,
+  100% {
+    transform: translateX(-50%) scaleY(0);
+  }
+}
+@keyframes vx-sortly-stream-b {
+  0%,
+  62% {
+    transform: translateX(-50%) scaleY(0);
+  }
+  64%,
+  70% {
+    transform: translateX(-50%) scaleY(1);
+  }
+  72%,
+  100% {
+    transform: translateX(-50%) scaleY(0);
+  }
+}
+.vx-sortly-stream-a {
+  transform-origin: top;
+  animation: vx-sortly-stream-a 8s linear infinite;
+}
+.vx-sortly-stream-b {
+  transform-origin: top;
+  animation: vx-sortly-stream-b 8s linear infinite;
+}
+
+/* Engagement flow strip on the work page: a pulse travels the line and each
+   stage lights as it passes. */
+@keyframes vx-flow-pulse {
+  0% {
+    left: 0%;
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  94% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+.vx-flow-pulse {
+  animation: vx-flow-pulse 6s var(--ease-out) infinite;
+}
+@keyframes vx-flow-step {
+  0%,
+  100% {
+    border-color: rgba(255, 255, 255, 0.09);
+    color: var(--muted);
+  }
+  12%,
+  28% {
+    border-color: rgba(124, 216, 0, 0.6);
+    color: var(--foreground);
+    box-shadow: 0 0 24px -8px rgba(124, 216, 0, 0.6);
+  }
+}
+.vx-flow-step {
+  animation: vx-flow-step 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vx-stmt-row,
+  .vx-stmt-status,
+  .vx-sortly-stars,
+  .vx-sortly-board,
+  .vx-sortly-tilt-l,
+  .vx-sortly-tilt-r,
+  .vx-sortly-stream-a,
+  .vx-sortly-stream-b,
+  .vx-flow-pulse,
+  .vx-flow-step {
+    animation: none;
+  }
+  .vx-sortly-out-a,
+  .vx-sortly-out-b,
+  .vx-sortly-in-a,
+  .vx-sortly-in-b {
+    animation: none;
+    height: 28px !important;
+  }
+  .vx-stmt-spin,
+  .vx-stmt-gen {
+    display: none;
+  }
+  .vx-stmt-ok {
+    opacity: 1;
+    animation: none;
+  }
+}
