@@ -826,3 +826,10 @@ details[open] > :not(summary) {
 .vx-mock:not(.is-armed) * {
   animation-play-state: paused !important;
 }
+
+/* Audited statement: a proper serif with lining, tabular figures. */
+.vx-stmt-doc {
+  font-family: Georgia, "Times New Roman", "Noto Serif", serif;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: #1a1f24;
+}

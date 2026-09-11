@@ -4,11 +4,11 @@ import { useMock } from "./use-mock";
 
 /**
  * The Shailesh & Associates audited-statement screen, rebuilt in HTML. Fixed
- * 900x640 layout scaled to its container. The statement rows appear in order,
+ * 900x730 layout scaled to its container. The statement rows appear in order,
  * as if generated, then a "balanced" check lands once both totals agree.
  */
 const W = 900;
-const H = 640;
+const H = 730;
 
 type Row = [label: string, note: string, cur: string, prev: string, kind: "h" | "r" | "t" | "T"];
 
@@ -78,11 +78,13 @@ export function StatementMock() {
               <span key={i} className="block h-[1.5px] w-[13px] bg-[#3c464e]" />
             ))}
           </span>
-          <span className="flex items-center gap-2">
-            <span className="text-[13px] font-extrabold tracking-tight">SA</span>
-            <span className="flex flex-col leading-none">
-              <span className="text-[10px] font-bold">Shailesh &amp; Associates</span>
-              <span className="text-[6.5px] tracking-[0.12em] text-[#6d777f]">CHARTERED ACCOUNTANTS</span>
+          <span className="flex items-center gap-2.5">
+            <span className="flex size-[24px] items-center justify-center rounded-md bg-[#1d4f91] text-[10px] font-extrabold tracking-tight text-white">
+              SA
+            </span>
+            <span className="flex flex-col gap-[3px]">
+              <span className="text-[10.5px] font-bold leading-none tracking-tight">Shailesh &amp; Associates</span>
+              <span className="text-[6.5px] font-semibold leading-none tracking-[0.16em] text-[#6d777f]">CHARTERED ACCOUNTANTS</span>
             </span>
           </span>
           {["Company Registrar", "Financial Management", "Automation Hub"].map((t) => (
@@ -138,27 +140,34 @@ export function StatementMock() {
 
           {/* document */}
           <div className="relative flex min-w-0 grow justify-center overflow-hidden px-6 pt-4">
-            <div className="vx-dash-in w-[600px] bg-white px-9 pb-6 pt-5 font-serif shadow-[0_1px_2px_rgba(0,0,0,0.06),0_8px_24px_-12px_rgba(0,0,0,0.25)]" style={{ animationDelay: "0.4s" }}>
-              <div className="border-t border-[#e3e8ed] pt-4 text-center">
-                <div className="text-[12.5px] font-bold">Statement of Financial Position</div>
-                <div className="text-[9.5px] font-semibold">As at 32nd Ashadh 2083</div>
+            <div
+              className="vx-dash-in vx-stmt-doc w-[620px] bg-white px-10 pb-7 pt-6 shadow-[0_1px_2px_rgba(0,0,0,0.06),0_8px_24px_-12px_rgba(0,0,0,0.25)]"
+              style={{ animationDelay: "0.4s" }}
+            >
+              <div className="text-center">
+                <div className="text-[13px] font-bold tracking-tight">Statement of Financial Position</div>
+                <div className="mt-[2px] text-[9.5px] font-semibold text-[#333]">As at 32nd Ashadh 2083</div>
               </div>
-              <div className="mt-2 flex flex-col items-end text-[8px] leading-tight">
-                <b>Figures in NPR</b>
-                <i>Restated</i>
+              <div className="mt-3 flex items-end justify-between text-[8px] leading-tight text-[#555]">
+                <span />
+                <span className="text-right">
+                  <b className="text-[#1a1f24]">Figures in NPR</b>
+                  <br />
+                  <i>Restated</i>
+                </span>
               </div>
 
-              <table className="mt-1 w-full border-collapse text-[8.5px] leading-[1.15]">
+              <table className="mt-1.5 w-full border-collapse text-[8.5px] leading-[1.3]">
                 <thead>
-                  <tr className="border border-[#333]">
-                    <th className="border border-[#333] py-1.5 text-center font-bold">Particulars</th>
-                    <th className="w-[46px] border border-[#333] py-1.5 text-center font-bold">Notes</th>
-                    <th className="w-[92px] border border-[#333] py-1.5 pr-1.5 text-right font-bold leading-tight">
+                  <tr className="bg-[#f3f5f7]">
+                    <th className="border border-[#9aa3ab] px-2 py-[5px] text-left font-bold">Particulars</th>
+                    <th className="w-[42px] border border-[#9aa3ab] px-1 py-[5px] text-center font-bold">Notes</th>
+                    <th className="w-[108px] border border-[#9aa3ab] px-2 py-[5px] text-right font-bold leading-tight">
                       As at
                       <br />
                       32nd Ashadh 2083
                     </th>
-                    <th className="w-[92px] border border-[#333] py-1.5 pr-1.5 text-right font-bold leading-tight">
+                    <th className="w-[108px] border border-[#9aa3ab] px-2 py-[5px] text-right font-bold leading-tight">
                       As at
                       <br />
                       31st Ashadh 2082
@@ -167,46 +176,44 @@ export function StatementMock() {
                 </thead>
                 <tbody>
                   {rows.map(([label, note, cur, prev, kind], i) => {
-                    const bold = kind !== "r";
+                    const heading = kind === "h";
                     const total = kind === "t" || kind === "T";
+                    const grand = kind === "T";
+                    const sectionStart = heading && i > 0 && rows[i - 1][4] !== "h";
+                    const cell = "border-x border-[#9aa3ab] px-2";
+                    const pad = sectionStart ? "pt-[7px] pb-[2px]" : heading ? "pt-[3px] pb-[2px]" : total ? "py-[3px]" : "py-[2px]";
+                    const num = (v: string) =>
+                      v ? (
+                        <span
+                          className={
+                            grand
+                              ? "inline-block border-t border-[#1a1f24] px-0.5 [border-bottom:3px_double_#1a1f24]"
+                              : total
+                                ? "inline-block border-y border-[#1a1f24] px-0.5"
+                                : ""
+                          }
+                        >
+                          {v}
+                        </span>
+                      ) : null;
                     return (
                       <tr
                         key={i}
-                        className="vx-stmt-row"
+                        className={`vx-stmt-row ${total ? "bg-[#fafbfc]" : ""} ${i === rows.length - 1 ? "border-b border-[#9aa3ab]" : ""}`}
                         style={{ animationDelay: `${ROW_START + i * ROW_STEP}s` }}
                       >
-                        <td
-                          className={`border-x border-[#333] px-1 ${kind === "h" && i > 0 && rows[i - 1][4] !== "h" ? "pt-2" : "pt-[1px]"} ${kind === "r" ? "border-b border-[#bbb]" : ""}`}
-                          style={{ fontWeight: bold ? 700 : 400 }}
-                        >
+                        <td className={`${cell} ${pad} ${heading || total ? "font-bold" : ""}`} style={{ paddingLeft: heading ? 8 : 14 }}>
                           {label}
                         </td>
-                        <td className="border-x border-[#333] px-1 text-center">{note}</td>
-                        {[cur, prev].map((v, j) => (
-                          <td
-                            key={j}
-                            className={`border-x border-[#333] px-1.5 text-right tabular-nums ${kind === "r" ? "border-b border-[#bbb]" : ""}`}
-                            style={{ fontWeight: bold ? 700 : 400 }}
-                          >
-                            {v ? (
-                              <span
-                                className={
-                                  total
-                                    ? `inline-block border-t border-[#333] px-0.5 ${kind === "T" ? "border-b-[3px] border-b-[#333] [border-bottom-style:double]" : "border-b border-[#333]"}`
-                                    : ""
-                                }
-                              >
-                                {v}
-                              </span>
-                            ) : null}
-                          </td>
-                        ))}
+                        <td className={`${cell} ${pad} text-center text-[#444]`}>{note}</td>
+                        <td className={`${cell} ${pad} text-right ${total ? "font-bold" : ""}`}>{num(cur)}</td>
+                        <td className={`${cell} ${pad} text-right ${total ? "font-bold" : ""}`}>{num(prev)}</td>
                       </tr>
                     );
                   })}
                 </tbody>
               </table>
-              <div className="mt-2 text-[8px] font-bold">The notes are an integral part of these financial statements.</div>
+              <div className="mt-2.5 text-[8px] italic text-[#444]">The notes are an integral part of these financial statements.</div>
             </div>
 
             {/* generating → balanced */}
