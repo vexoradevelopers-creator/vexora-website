@@ -14,18 +14,19 @@ const W = 1120;
 const H = 700;
 const LOOP = 8000;
 
-type Product = [name: string, sku: string, cat: string, dealer: string, retailer: string, mrp: string, stock: string, status: "Active" | "Reorder" | "No price", tint: string];
+type Kind = "pump" | "bottle" | "tube" | "jar" | "ampoule";
+type Product = [name: string, sku: string, cat: string, dealer: string, retailer: string, mrp: string, stock: string, status: "Active" | "Reorder" | "No price", tint: string, kind: Kind];
 
 const products: Product[] = [
-  ["Kerasys Moisturizing Shampoo 600 ml", "Kerasys · KER-MS-600", "Hair", "760", "890", "1,050", "460", "Active", "#c9a27a"],
-  ["Kerasys Deep Cleansing Shampoo 600 ml", "Kerasys · KER-DC-600", "Hair", "790", "890", "1,050", "356", "Active", "#7fb3c9"],
-  ["Showermate Coconut & White Tea 550 g", "Aekyung · AEK-SM-CWT", "Body", "560", "640", "750", "216", "Active", "#8e6fc9"],
-  ["Showermate Rose & Cherry Blossom 550 g", "Aekyung · AEK-SM-RCB", "Body", "560", "640", "750", "36", "Reorder", "#e08aa8"],
-  ["Aekyung Toothpaste Shining White 100 g", "Aekyung · AEK-TP-100", "Oral", "205", "235", "275", "960", "Active", "#5fb7c4"],
-  ["Super UV Sun Block SPF50+ 60 ml", "MEDICOS · MED-UV-060", "Sun care", "[set]", "[set]", "[set]", "600", "No price", "#e8d38a"],
-  ["Hydra Impact Moisturizing Cream 90 ml", "MEDICOS · MED-HI-090", "Skincare", "[set]", "[set]", "[set]", "480", "No price", "#b9c7d6"],
-  ["Anti Hair Loss Shampoo 500 ml", "MEDICOS · MED-AHL-500", "Hair", "[set]", "[set]", "[set]", "300", "No price", "#8a5a3c"],
-  ["Ever Collagen Treatment", "MEDICOS · MED-ECT-001", "Hair", "[set]", "[set]", "[set]", "240", "No price", "#4fa7a0"],
+  ["Kerasys Moisturizing Shampoo 600 ml", "Kerasys · KER-MS-600", "Hair", "760", "890", "1,050", "460", "Active", "#c9a27a", "pump"],
+  ["Kerasys Deep Cleansing Shampoo 600 ml", "Kerasys · KER-DC-600", "Hair", "790", "890", "1,050", "356", "Active", "#7fb3c9", "pump"],
+  ["Showermate Coconut & White Tea 550 g", "Aekyung · AEK-SM-CWT", "Body", "560", "640", "750", "216", "Active", "#8e6fc9", "bottle"],
+  ["Showermate Rose & Cherry Blossom 550 g", "Aekyung · AEK-SM-RCB", "Body", "560", "640", "750", "36", "Reorder", "#e08aa8", "bottle"],
+  ["Aekyung Toothpaste Shining White 100 g", "Aekyung · AEK-TP-100", "Oral", "205", "235", "275", "960", "Active", "#5fb7c4", "tube"],
+  ["Super UV Sun Block SPF50+ 60 ml", "MEDICOS · MED-UV-060", "Sun care", "[set]", "[set]", "[set]", "600", "No price", "#e8d38a", "tube"],
+  ["Hydra Impact Moisturizing Cream 90 ml", "MEDICOS · MED-HI-090", "Skincare", "[set]", "[set]", "[set]", "480", "No price", "#b9c7d6", "jar"],
+  ["Anti Hair Loss Shampoo 500 ml", "MEDICOS · MED-AHL-500", "Hair", "[set]", "[set]", "[set]", "300", "No price", "#8a5a3c", "pump"],
+  ["Ever Collagen Treatment", "MEDICOS · MED-ECT-001", "Hair", "[set]", "[set]", "[set]", "240", "No price", "#4fa7a0", "ampoule"],
 ];
 
 const statusColor = { Active: green, Reorder: amber, "No price": coral } as const;
@@ -35,7 +36,57 @@ const history: [string, string, string, string][] = [
   ["1 Shrawan 2082", "740", "840", "980"],
 ];
 
-const COLS = "grid-cols-[1.9fr_0.8fr_0.6fr_0.7fr_0.6fr_0.6fr_0.8fr]";
+const COLS = "grid-cols-[minmax(0,1fr)_64px_52px_58px_52px_48px_70px]";
+
+/** Small vector product shots, tinted per SKU. */
+function ProductArt({ kind, tint }: { kind: Kind; tint: string }) {
+  const dark = `color-mix(in srgb, ${tint} 70%, #000)`;
+  const light = `color-mix(in srgb, ${tint} 45%, #fff)`;
+  const body: Record<Kind, React.ReactNode> = {
+    pump: (
+      <>
+        <rect x="14" y="2" width="4" height="7" rx="1" fill={dark} />
+        <path d="M16 4h6v2h-6z" fill={dark} />
+        <rect x="12" y="8" width="8" height="3" rx="1" fill={dark} />
+        <path d="M10 12q0-2 2-2h8q2 0 2 2v15q0 3-3 3h-6q-3 0-3-3z" fill={tint} />
+        <rect x="12" y="16" width="8" height="7" rx="1" fill={light} opacity="0.9" />
+      </>
+    ),
+    bottle: (
+      <>
+        <rect x="12" y="2" width="8" height="4" rx="1" fill={dark} />
+        <path d="M9 9q0-3 3-3h8q3 0 3 3v17q0 4-4 4h-6q-4 0-4-4z" fill={tint} />
+        <rect x="11" y="13" width="10" height="9" rx="1.5" fill={light} opacity="0.9" />
+      </>
+    ),
+    tube: (
+      <>
+        <rect x="12" y="2" width="8" height="4" rx="1" fill={dark} />
+        <path d="M11 6h10l2 22q0 2-2 2H11q-2 0-2-2z" fill={tint} />
+        <rect x="11.5" y="12" width="9" height="8" rx="1.5" fill={light} opacity="0.9" />
+      </>
+    ),
+    jar: (
+      <>
+        <rect x="7" y="9" width="18" height="5" rx="1.5" fill={dark} />
+        <path d="M8 14h16v11q0 4-4 4H12q-4 0-4-4z" fill={tint} />
+        <rect x="10" y="17" width="12" height="6" rx="1.5" fill={light} opacity="0.9" />
+      </>
+    ),
+    ampoule: (
+      <>
+        <rect x="14" y="2" width="4" height="8" rx="1.5" fill={dark} />
+        <path d="M12 10h8v14q0 6-4 6t-4-6z" fill={tint} />
+        <rect x="13.5" y="14" width="5" height="7" rx="1" fill={light} opacity="0.9" />
+      </>
+    ),
+  };
+  return (
+    <svg viewBox="0 0 32 32" className="size-[26px]" aria-hidden>
+      {body[kind]}
+    </svg>
+  );
+}
 
 export function PricesMock() {
   const { ref, armed } = useMock(W);
@@ -150,21 +201,21 @@ export function PricesMock() {
                 <span className="text-right">Stock</span>
                 <span className="pl-4">Status</span>
               </div>
-              {products.map(([name, sku, cat, dealer, retailer, mrp, stock, status, tint], i) => {
+              {products.map(([name, sku, cat, dealer, retailer, mrp, stock, status, tint, kind], i) => {
                 const live = i === 0;
                 const price = live ? (saved ? "790" : "760") : dealer;
                 return (
                   <div
                     key={sku}
-                    className={`vx-dash-in grid ${COLS} items-center border-b border-[#eef1f4] py-[6px] text-[10px] tabular-nums`}
+                    className={`vx-dash-in grid ${COLS} items-center border-b border-[#eef1f4] py-[7px] text-[10px] tabular-nums`}
                     style={{ animationDelay: `${0.7 + i * 0.06}s` }}
                   >
-                    <span className="flex items-center gap-2.5 pr-2">
-                      <span className="flex size-[24px] shrink-0 items-center justify-center rounded-md" style={{ background: `${tint}33` }}>
-                        <span className="h-[14px] w-[7px] rounded-[2px]" style={{ background: tint }} />
+                    <span className="flex min-w-0 items-center gap-2.5 pr-3">
+                      <span className="flex size-[34px] shrink-0 items-center justify-center rounded-lg" style={{ background: `${tint}26` }}>
+                        <ProductArt kind={kind} tint={tint} />
                       </span>
-                      <span className="flex min-w-0 flex-col leading-tight">
-                        <span className="truncate font-semibold">{name}</span>
+                      <span className="flex min-w-0 flex-col gap-[2px] leading-[1.2]">
+                        <span className="max-w-[150px] font-semibold">{name}</span>
                         <span className="text-[8px] text-[#8a949c]">{sku}</span>
                       </span>
                     </span>
@@ -183,6 +234,20 @@ export function PricesMock() {
                   </div>
                 );
               })}
+              <div className="mt-auto flex items-center justify-between pt-3 text-[9px] text-[#8a949c]">
+                <span>Showing 1–9 of 31 products</span>
+                <span className="flex items-center gap-1">
+                  {["‹", "1", "2", "3", "4", "›"].map((n, i) => (
+                    <span
+                      key={n}
+                      className="flex h-[20px] min-w-[20px] items-center justify-center rounded-md px-1 font-medium"
+                      style={{ background: i === 1 ? "#1a1f24" : "#eef1f4", color: i === 1 ? "#fff" : "#3c464e" }}
+                    >
+                      {n}
+                    </span>
+                  ))}
+                </span>
+              </div>
             </div>
 
             {/* price panel */}
