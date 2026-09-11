@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { asset } from "@/lib/asset";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -66,7 +65,7 @@ export default function HomePage() {
           <div className="rounded-3xl border border-border bg-[linear-gradient(180deg,#101314,#0b0d0e)] p-2.5 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.9)] lg:p-3.5">
             <div className="overflow-hidden rounded-xl border border-border bg-background-secondary">
               <Image
-                src={asset("/medicos-overview.webp")}
+                src="/medicos-overview.webp"
                 alt="The MediCos Nepal distribution dashboard, built by Vexora"
                 width={1600}
                 height={1000}

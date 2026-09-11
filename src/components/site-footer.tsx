@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { asset } from "@/lib/asset";
 import Link from "next/link";
 import { company, nav, services, socials } from "@/lib/site";
 import { Rule, Wrap } from "./ui";
@@ -10,8 +9,8 @@ export function SiteFooter() {
       <Wrap className="grid gap-10 py-12 lg:grid-cols-[1.5fr_repeat(3,1fr)] lg:py-16">
         <div className="flex flex-col gap-4">
           <Link href="/" className="flex items-center gap-2.5" aria-label="Vexora home">
-            <Image src={asset("/vexora-mark.png")} alt="" width={340} height={360} className="h-[30px] w-auto" />
-            <Image src={asset("/vexora-wordmark.png")} alt="Vexora" width={1012} height={128} className="h-[19px] w-auto" />
+            <Image src="/vexora-mark.png" alt="" width={340} height={360} className="h-[30px] w-auto" />
+            <Image src="/vexora-wordmark.png" alt="Vexora" width={1012} height={128} className="h-[19px] w-auto" />
           </Link>
           <p className="max-w-[320px] text-sm leading-relaxed text-muted">
             {company.legalName}. A software studio in Chitwan building web
