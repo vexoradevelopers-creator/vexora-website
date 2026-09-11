@@ -58,7 +58,7 @@ const DONE = ROW_START + rows.length * ROW_STEP + 0.3;
 /** The firm's mark: a navy S and an A whose left stroke is the orange wedge. */
 function SaLogo({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 64 64" className={className} aria-hidden>
+    <svg viewBox="0 0 68 64" className={className} aria-hidden>
       <text
         x="0"
         y="53"
@@ -69,10 +69,14 @@ function SaLogo({ className = "" }: { className?: string }) {
       >
         S
       </text>
-      {/* right leg + crossbar */}
-      <path d="M46 9h7l10 44h-9l-2.6-10.5h-6.9l2.4-8h2.4L46 17z" fill="#1b2a5b" />
-      {/* left stroke */}
-      <path d="M46 9h7L39 53h-9z" fill="#e5472b" />
+      {/* A, cap height matched to the S */}
+      <path
+        d="M46 17h7l15 36h-9l-3-8.5H42l-3 8.5h-9zM49.5 26.5 44.8 38h9.4z"
+        fill="#1b2a5b"
+        fillRule="evenodd"
+      />
+      {/* orange wedge at the foot of the left leg */}
+      <path d="M34.2 44.5H42L39 53h-9z" fill="#e5472b" />
     </svg>
   );
 }
