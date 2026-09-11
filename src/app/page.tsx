@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { HeroDashboard } from "@/components/hero-dashboard";
 import {
   ArrowRight,
   Check,
@@ -63,15 +63,7 @@ export default function HomePage() {
         <Wrap className="relative mt-10 lg:mt-16">
           <div className="vx-frame rounded-3xl border border-border bg-[linear-gradient(180deg,#101314,#0b0d0e)] p-2.5 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.9)] lg:p-3.5">
             <div className="overflow-hidden rounded-xl border border-border bg-background-secondary">
-              <Image
-                src="/medicos-overview.webp"
-                alt="The MediCos Nepal distribution dashboard, built by Vexora"
-                width={1600}
-                height={1000}
-                priority
-                sizes="(max-width: 1024px) 100vw, 1170px"
-                className="block h-auto w-full"
-              />
+              <HeroDashboard />
               <div className="flex flex-col items-start justify-between gap-3 border-t border-border px-5 py-4 text-left lg:flex-row lg:items-center lg:gap-6 lg:px-6 lg:py-5">
                 <div className="flex flex-wrap items-center gap-3.5">
                   <span className="inline-flex h-[30px] shrink-0 items-center rounded-full border border-accent/35 bg-accent/[0.12] px-3 text-sm font-medium text-accent">

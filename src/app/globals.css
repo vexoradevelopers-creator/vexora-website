@@ -362,3 +362,84 @@ details[open] > :not(summary) {
     transform: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+ * Hero dashboard: fixed 1120px layout scaled to its container. Sub-pieces
+ * animate in after the frame has risen; reduced motion shows the end state.
+ * ------------------------------------------------------------------------- */
+.vx-dash {
+  --s: tan(atan2(100cqw, 1120px));
+}
+.vx-dash-in {
+  animation: vx-fade 0.6s var(--ease-out) both;
+}
+@keyframes vx-dash-bar {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+.vx-dash-bar {
+  animation: vx-dash-bar 0.7s var(--ease-out) both;
+}
+@keyframes vx-dash-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.vx-dash-fill {
+  animation: vx-dash-fill 0.9s var(--ease-out) both;
+}
+@keyframes vx-dash-slide {
+  from {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.vx-dash-slide {
+  animation: vx-dash-slide 0.55s var(--ease-out) both;
+}
+@keyframes vx-dash-nav {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.vx-dash-nav {
+  animation: vx-dash-nav 0.45s var(--ease-out) both;
+}
+@keyframes vx-dash-dot {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(232, 98, 74, 0.5);
+  }
+  60% {
+    box-shadow: 0 0 0 5px rgba(232, 98, 74, 0);
+  }
+}
+.vx-dash-dot {
+  animation: vx-dash-dot 2.4s ease-out 2s infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .vx-dash-in,
+  .vx-dash-bar,
+  .vx-dash-fill,
+  .vx-dash-slide,
+  .vx-dash-nav,
+  .vx-dash-dot {
+    animation: none;
+  }
+}
