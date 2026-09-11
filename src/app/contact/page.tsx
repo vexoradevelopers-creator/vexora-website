@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { EnquiryForm } from "@/components/enquiry-form";
-import { Eyebrow, Todo, Wrap } from "@/components/ui";
+import { Eyebrow, Wrap } from "@/components/ui";
 import { company } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -57,7 +57,7 @@ export default function ContactPage() {
             </Row>
             <Row label="Office">{company.address}</Row>
             <Row label="Hours">
-              <Todo>{company.hours}</Todo>
+              {company.hours}
             </Row>
           </div>
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, CtaBand, Eyebrow, Rule, Todo, Wrap } from "@/components/ui";
+import { Check, CtaBand, Eyebrow, Rule, Wrap } from "@/components/ui";
 import { services } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -96,15 +96,9 @@ export default function ServicesPage() {
                   ))}
                 </div>
                 <Rule />
-                <div className="flex flex-wrap items-center justify-between gap-4">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-xs text-faint">Typical build</span>
-                    <Todo>{s.duration}</Todo>
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="text-xs text-faint">From</span>
-                    <Todo>{s.price}</Todo>
-                  </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-xs text-faint">Typical build</span>
+                  <span className="text-sm font-medium">{s.duration}</span>
                 </div>
               </div>
             </div>

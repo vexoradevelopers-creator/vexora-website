@@ -9,7 +9,7 @@ export const company = {
   email: "vexoradevelopers@gmail.com",
   emailHref: "mailto:vexoradevelopers@gmail.com",
   address: "Khairahani-01, Chitwan, Nepal",
-  hours: "[MON-SAT, 10:00-19:00 NPT]",
+  hours: "Mon-Sat, 10:00-17:00 NPT",
 } as const;
 
 export const socials = [
@@ -17,12 +17,12 @@ export const socials = [
     label: "LinkedIn",
     // Resolved from the organisation id in the search link you sent.
     href: "https://www.linkedin.com/company/143674980/",
-    short: "in",
+    icon: "linkedin",
   },
   {
     label: "Instagram",
     href: "https://www.instagram.com/vexoradeveleopers/",
-    short: "ig",
+    icon: "instagram",
   },
 ] as const;
 
@@ -114,8 +114,7 @@ export const services = [
       "An admin area your team can run without us",
     ],
     tech: ["React", "Next.js", "Node.js", "PostgreSQL", "AWS"],
-    duration: "[6-12 WEEKS]",
-    price: "[YOUR PRICE]",
+    duration: "6-12 weeks",
   },
   {
     slug: "websites",
@@ -131,8 +130,7 @@ export const services = [
       "An editor for your own text and images",
     ],
     tech: ["Next.js", "Headless CMS", "Analytics", "On-page SEO"],
-    duration: "[2-4 WEEKS]",
-    price: "[YOUR PRICE]",
+    duration: "2-4 weeks",
   },
   {
     slug: "mobile-apps",
@@ -147,8 +145,7 @@ export const services = [
       "Developer accounts registered in your name",
     ],
     tech: ["React Native", "Expo", "Play Store", "App Store"],
-    duration: "[8-14 WEEKS]",
-    price: "[YOUR PRICE]",
+    duration: "8-14 weeks",
   },
   {
     slug: "games",
@@ -163,8 +160,7 @@ export const services = [
       "Store listing, analytics and updates",
     ],
     tech: ["Unity", "WebGL", "Canvas"],
-    duration: "[SCOPE-DEPENDENT]",
-    price: "[YOUR PRICE]",
+    duration: "Scope-dependent",
   },
   {
     slug: "consulting",
@@ -179,8 +175,7 @@ export const services = [
       "A response time written into the agreement",
     ],
     tech: ["Architecture", "Migrations", "Maintenance"],
-    duration: "[ONGOING]",
-    price: "[YOUR PRICE]",
+    duration: "Ongoing",
   },
 ] as const;
 
@@ -197,7 +192,7 @@ export const steps = [
     title: "Written proposal",
     short: "Scope, price and dates on paper before anything is signed.",
     body: "A document you could hand to any other developer and get a comparable quote. If we think the project is a bad idea, that goes on paper too.",
-    chips: ["[3-5 working days]", "Fixed price", "Fixed dates"],
+    chips: ["3-5 working days", "Fixed price", "Fixed dates"],
   },
   {
     n: "03",
@@ -211,7 +206,7 @@ export const steps = [
     title: "Launch & handover",
     short: "Code, accounts and documentation, plus a recorded walkthrough.",
     body: "If you replaced us the following week, nothing would stop working. Support is priced separately, so you are never locked in by default.",
-    chips: ["[1 week]", "Everything transferred"],
+    chips: ["1 week", "Everything transferred"],
   },
 ] as const;
 

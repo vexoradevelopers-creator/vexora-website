@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Eyebrow, Todo, Wrap, CtaBand } from "@/components/ui";
+import { Eyebrow, Wrap, CtaBand } from "@/components/ui";
 import { company } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -31,12 +31,11 @@ const rules = [
   },
 ];
 
-const details: [string, string, boolean][] = [
-  ["Legal name", company.legalName, false],
-  ["Trading as", company.shortName, false],
-  ["Reg. No.", company.regNo, false],
-  ["Incorporated", "[MONTH YEAR]", true],
-  ["Registered office", company.address, false],
+const details: [string, string][] = [
+  ["Legal name", company.legalName],
+  ["Trading as", company.shortName],
+  ["Reg. No.", company.regNo],
+  ["Registered office", company.address],
 ];
 
 export default function AboutPage() {
@@ -62,12 +61,6 @@ export default function AboutPage() {
               when it broke. The remedy is not clever technology. It is writing things
               down, showing work every week, and handing over everything at the end.
             </p>
-            <p className="text-base leading-relaxed lg:text-[17px]">
-              <Todo>
-                [ADD TWO OR THREE SENTENCES ABOUT WHO FOUNDED VEXORA AND WHY. PEOPLE HIRE
-                PEOPLE, ESPECIALLY AT THIS STAGE.]
-              </Todo>
-            </p>
           </div>
 
           <div className="flex flex-col gap-3.5 rounded-2xl border border-border bg-surface p-6 lg:p-8">
@@ -75,7 +68,7 @@ export default function AboutPage() {
               Company details
             </span>
             <div className="flex flex-col">
-              {details.map(([k, v, todo], i) => (
+              {details.map(([k, v], i) => (
                 <div
                   key={k}
                   className={`flex justify-between gap-5 py-3.5 ${
@@ -84,7 +77,7 @@ export default function AboutPage() {
                 >
                   <span className="shrink-0 text-sm text-faint">{k}</span>
                   <span className="text-right text-sm leading-relaxed">
-                    {todo ? <Todo>{v}</Todo> : v}
+                    {v}
                   </span>
                 </div>
               ))}
@@ -127,27 +120,6 @@ export default function AboutPage() {
           </p>
         </div>
         <div className="mt-8 grid gap-5 lg:mt-10 lg:grid-cols-3">
-          {[0, 1].map((i) => (
-            <div key={i} className="flex flex-col gap-4 rounded-2xl border border-border bg-surface p-6 lg:p-7">
-              <div className="flex size-[72px] items-center justify-center rounded-full border border-dashed border-accent/40 bg-accent/[0.05]">
-                <svg viewBox="0 0 24 24" aria-hidden className="size-7 stroke-accent" fill="none" strokeWidth={1.5} strokeLinecap="round">
-                  <circle cx="12" cy="8.5" r="3.8" />
-                  <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
-                </svg>
-              </div>
-              <div className="flex flex-col gap-1">
-                <h3 className="text-[21px]">
-                  <Todo>{i === 0 ? "[FOUNDER NAME]" : "[NAME]"}</Todo>
-                </h3>
-                <span className="font-mono text-xs uppercase tracking-[0.1em] text-faint">
-                  [ROLE]
-                </span>
-              </div>
-              <p className="text-sm leading-relaxed">
-                <Todo>[ONE OR TWO SENTENCES: WHAT THEY BUILD, AND ONE HUMAN DETAIL.]</Todo>
-              </p>
-            </div>
-          ))}
           <div className="flex flex-col justify-center gap-3 rounded-2xl border border-dashed border-white/[0.14] bg-background-secondary p-6 lg:p-7">
             <h3 className="text-[21px]">Hiring soon</h3>
             <p className="text-sm leading-relaxed text-muted">

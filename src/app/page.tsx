@@ -8,7 +8,6 @@ import {
   Rule,
   Section,
   SectionHead,
-  Todo,
   Wrap,
 } from "@/components/ui";
 import {
@@ -29,9 +28,9 @@ export default function HomePage() {
       <div className="relative overflow-hidden pt-14 lg:pt-[104px]">
         <div className="vx-glow left-1/2 top-[-330px] h-[800px] w-[1180px] -translate-x-1/2" />
         <Wrap className="relative flex flex-col items-center gap-6 text-center lg:gap-7">
-          <h1 className="mt-4 max-w-[1020px] text-[41px] leading-[1.06] lg:mt-6 lg:text-[72px] lg:leading-[1.03]">
-            Your business isn&rsquo;t off&#8209;the&#8209;shelf.
-            <br className="hidden lg:block" /> Your software shouldn&rsquo;t be.
+          <h1 className="mt-4 max-w-[1100px] text-balance text-[41px] leading-[1.06] lg:mt-6 lg:text-[clamp(56px,6.4vw,68px)] lg:leading-[1.04]">
+            <span className="lg:block lg:whitespace-nowrap">Your business isn&rsquo;t off the shelf.</span>{" "}
+            <span className="lg:block lg:whitespace-nowrap">Your software shouldn&rsquo;t be.</span>
           </h1>
           <p className="max-w-[730px] text-pretty text-base leading-relaxed text-muted lg:text-xl">
             Vexora is a software studio that builds web applications, websites, mobile

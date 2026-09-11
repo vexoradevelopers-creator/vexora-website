@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Check, CtaBand, Eyebrow, Rule, Todo, Wrap } from "@/components/ui";
+import { Check, CtaBand, Eyebrow, Rule, Wrap } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -106,11 +106,10 @@ export default function WorkPage() {
               <span className="font-mono text-xs uppercase tracking-[0.16em] text-faint">
                 What changed
               </span>
-              <p className="text-sm leading-relaxed">
-                <Todo>
-                  [FILL THIS IN WITH THE CLIENT: HOURS SAVED PER WEEK, OR A ONE-LINE
-                  QUOTE. ONE REAL NUMBER HERE IS WORTH MORE THAN THE REST OF THIS PAGE.]
-                </Todo>
+              <p className="text-base leading-relaxed">
+                Around 80% of the firm&rsquo;s day-to-day workflow is now automated.
+                Engagement status, statements and client records live in one place,
+                so the team spends its time on the work instead of tracking it.
               </p>
             </div>
           </div>

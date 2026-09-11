@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Check, CtaBand, Eyebrow, Rule, Todo, Wrap } from "@/components/ui";
+import { Check, CtaBand, Eyebrow, Rule, Wrap } from "@/components/ui";
 import { steps } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -100,14 +100,6 @@ export default function HowWeWorkPage() {
                 <h3 className="text-lg">What you get from this step</h3>
                 <Rule className="my-4" />
                 <p className="text-sm leading-relaxed text-muted">{s.body}</p>
-                {i === 3 ? (
-                  <p className="mt-4 text-sm leading-relaxed">
-                    <Todo>
-                      [STATE YOUR SUPPORT TERMS HERE: MONTHLY FEE, RESPONSE TIME, AND WHAT
-                      IS COVERED.]
-                    </Todo>
-                  </p>
-                ) : null}
               </div>
             </div>
           </Wrap>
@@ -160,17 +152,16 @@ export default function HowWeWorkPage() {
           <Eyebrow>If it goes wrong</Eyebrow>
           <h2 className="text-[28px] lg:text-[38px]">What you can hold us to.</h2>
           <p className="text-base leading-relaxed text-muted">
-            A process is only worth something if there is a consequence attached. Write your
-            own terms into this section before the site goes live.
+            A process is only worth something if there is a consequence attached. These are
+            ours.
           </p>
           <div className="rounded-2xl border border-border bg-surface p-6">
             <h3 className="text-lg">Our commitment</h3>
-            <p className="mt-3 text-sm leading-relaxed">
-              <Todo>
-                [WRITE YOUR OWN GUARANTEE HERE. SOMETHING SPECIFIC AND KEEPABLE BEATS
-                SOMETHING GENEROUS AND VAGUE. FOR EXAMPLE, WHAT HAPPENS IF A MILESTONE IS
-                LATE, OR HOW A CLIENT CAN EXIT MID-PROJECT AND WHAT THEY KEEP.]
-              </Todo>
+            <p className="mt-3 text-sm leading-relaxed text-muted">
+              If a milestone slips because of us, you hear about it the same week and the
+              delay is not billed. You can stop the project at any weekly build, pay only
+              for the weeks delivered, and keep everything built so far: code, accounts
+              and documentation. Nothing we build is tied to us to keep running.
             </p>
           </div>
         </div>
