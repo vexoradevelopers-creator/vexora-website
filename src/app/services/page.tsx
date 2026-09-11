@@ -22,7 +22,7 @@ export default function ServicesPage() {
     <>
       <div className="relative overflow-hidden pt-14 lg:pt-[92px]">
         <div className="vx-glow left-[10%] top-[-300px] h-[640px] w-[900px]" />
-        <Wrap className="relative grid gap-10 lg:grid-cols-[1.25fr_1fr] lg:items-end lg:gap-16">
+        <Wrap className="vx-hero relative grid gap-10 lg:grid-cols-[1.25fr_1fr] lg:items-end lg:gap-16">
           <div className="flex flex-col gap-5">
             <Eyebrow>Services</Eyebrow>
             <h1 className="text-[38px] leading-[1.06] lg:text-[60px] lg:leading-[1.04]">
@@ -35,7 +35,7 @@ export default function ServicesPage() {
               better. That costs us a job and saves you a bad one.
             </p>
           </div>
-          <div className="flex flex-col gap-4 rounded-2xl border border-border bg-surface p-6 lg:p-7">
+          <div className="vx-card flex flex-col gap-4 rounded-2xl border border-border bg-surface p-6 lg:p-7">
             <span className="font-mono text-xs uppercase tracking-[0.16em] text-faint">
               Every engagement includes
             </span>
@@ -55,6 +55,7 @@ export default function ServicesPage() {
         <section key={s.slug} className="pt-14 lg:pt-[76px]">
           <Wrap>
             <div
+              data-reveal
               className="grid gap-8 border-t-2 pt-9 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16"
               style={{
                 borderColor:
@@ -79,13 +80,13 @@ export default function ServicesPage() {
                 </div>
                 <Link
                   href="/contact"
-                  className="mt-3 inline-flex h-11 w-fit items-center rounded-full bg-accent px-6 font-display text-[15px] font-semibold text-accent-foreground transition hover:brightness-110"
+                  className="vx-btn vx-btn-primary mt-3 inline-flex h-11 w-fit items-center rounded-full bg-accent px-6 font-display text-[15px] font-semibold text-accent-foreground transition hover:brightness-110"
                 >
                   Scope a project
                 </Link>
               </div>
 
-              <div className="flex flex-col gap-4 rounded-2xl border border-border bg-surface p-6 lg:p-7">
+              <div className="vx-card flex flex-col gap-4 rounded-2xl border border-border bg-surface p-6 lg:p-7">
                 <h3 className="text-lg">Typically includes</h3>
                 <div className="flex flex-col gap-2.5">
                   {s.includes.map((i) => (

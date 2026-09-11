@@ -1,16 +1,17 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
 /** Page-width container. 1200px of content, matching the design. */
 export function Wrap({
   children,
   className = "",
+  ...rest
 }: {
   children: ReactNode;
   className?: string;
-}) {
+} & Omit<ComponentProps<"div">, "className" | "children">) {
   return (
-    <div className={`mx-auto w-full max-w-[1200px] px-5 lg:px-6 ${className}`}>
+    <div className={`mx-auto w-full max-w-[1200px] px-5 lg:px-6 ${className}`} {...rest}>
       {children}
     </div>
   );
@@ -39,14 +40,20 @@ export function SectionHead({
   title,
   lead,
   className = "",
+  reveal = false,
 }: {
   eyebrow: string;
   title: string;
   lead?: string;
   className?: string;
+  /** Fade the head up on scroll. */
+  reveal?: boolean;
 }) {
   return (
-    <div className={`flex max-w-[780px] flex-col gap-4 ${className}`}>
+    <div
+      data-reveal={reveal ? "" : undefined}
+      className={`flex max-w-[780px] flex-col gap-4 ${className}`}
+    >
       <Eyebrow>{eyebrow}</Eyebrow>
       <h2 className="text-[32px] lg:text-5xl">{title}</h2>
       {lead ? (
@@ -84,7 +91,7 @@ export function ArrowRight({ className = "" }: { className?: string }) {
     <svg
       viewBox="0 0 24 24"
       aria-hidden
-      className={`size-4 shrink-0 ${className}`}
+      className={`vx-arrow size-4 shrink-0 ${className}`}
       fill="none"
       stroke="currentColor"
       strokeWidth={1.5}
@@ -119,7 +126,7 @@ export function CtaBand({
   return (
     <Section>
       <Wrap>
-        <div className="relative overflow-hidden rounded-3xl border border-accent/25 bg-[linear-gradient(135deg,#141a10,#0c0e0d)] p-8 lg:p-16">
+        <div data-reveal className="relative overflow-hidden rounded-3xl border border-accent/25 bg-[linear-gradient(135deg,#141a10,#0c0e0d)] p-8 lg:p-16">
           <div className="vx-glow -top-40 -right-24 h-[500px] w-[600px]" />
           <div className="relative flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center lg:gap-14">
             <div className="flex flex-col gap-3.5">
@@ -129,7 +136,7 @@ export function CtaBand({
             <div className="flex w-full shrink-0 flex-col gap-3 lg:w-auto">
               <Link
                 href={href}
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-accent px-6 font-display text-base font-semibold text-accent-foreground transition hover:brightness-110"
+                className="vx-btn vx-btn-primary inline-flex h-12 items-center justify-center gap-2 rounded-full bg-accent px-6 font-display text-base font-semibold text-accent-foreground transition hover:brightness-110"
               >
                 {cta}
                 <ArrowRight />

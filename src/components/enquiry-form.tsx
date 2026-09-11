@@ -134,7 +134,7 @@ export function EnquiryForm({ compact = false }: { compact?: boolean }) {
       <button
         type="submit"
         disabled={state === "sending"}
-        className="mt-1.5 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-accent font-display text-base font-semibold text-accent-foreground transition hover:brightness-110 disabled:opacity-60"
+        className="vx-btn vx-btn-primary mt-1.5 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-accent font-display text-base font-semibold text-accent-foreground transition hover:brightness-110 disabled:opacity-60"
       >
         {state === "sending" ? "Sending…" : "Send it over"}
         {state === "sending" ? null : <ArrowRight />}

@@ -26,34 +26,34 @@ export default function HomePage() {
     <>
       {/* HERO */}
       <div className="relative overflow-hidden pt-14 lg:pt-[104px]">
-        <div className="vx-glow left-1/2 top-[-330px] h-[800px] w-[1180px] -translate-x-1/2" />
+        <div className="vx-glow vx-glow-breathe left-1/2 top-[-330px] h-[800px] w-[1180px] -translate-x-1/2" />
         <Wrap className="relative flex flex-col items-center gap-6 text-center lg:gap-7">
-          <h1 className="mt-4 max-w-[1100px] text-balance text-[41px] leading-[1.06] lg:mt-6 lg:text-[clamp(56px,6.4vw,68px)] lg:leading-[1.04]">
+          <h1 style={{ "--i": 0 } as React.CSSProperties} className="vx-rise mt-4 max-w-[1100px] text-balance text-[41px] leading-[1.06] lg:mt-6 lg:text-[clamp(56px,6.4vw,68px)] lg:leading-[1.04]">
             <span className="lg:block lg:whitespace-nowrap">Your business isn&rsquo;t off the shelf.</span>{" "}
             <span className="lg:block lg:whitespace-nowrap">Your software shouldn&rsquo;t be.</span>
           </h1>
-          <p className="max-w-[730px] text-pretty text-base leading-relaxed text-muted lg:text-xl">
+          <p style={{ "--i": 1 } as React.CSSProperties} className="vx-rise max-w-[730px] text-pretty text-base leading-relaxed text-muted lg:text-xl">
             Vexora is a software studio that builds web applications, websites, mobile
             apps and games for businesses that have outgrown spreadsheets and templates.
             We scope in writing, build in weekly slices you can click, and hand over
             everything: code, accounts and documentation included.
           </p>
-          <div className="flex w-full flex-col items-stretch gap-3 lg:w-auto lg:flex-row lg:items-center">
+          <div style={{ "--i": 2 } as React.CSSProperties} className="vx-rise flex w-full flex-col items-stretch gap-3 lg:w-auto lg:flex-row lg:items-center">
             <Link
               href="/contact"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-accent px-6 font-display text-base font-semibold text-accent-foreground transition hover:brightness-110"
+              className="vx-btn vx-btn-primary inline-flex h-12 items-center justify-center gap-2 rounded-full bg-accent px-6 font-display text-base font-semibold text-accent-foreground transition hover:brightness-110"
             >
               Start a project
               <ArrowRight />
             </Link>
             <Link
               href="/work"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/[0.16] px-6 font-display text-base font-semibold transition hover:border-white/30"
+              className="vx-btn inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/[0.16] px-6 font-display text-base font-semibold transition hover:border-white/30"
             >
               See what we build
             </Link>
           </div>
-          <p className="text-base text-faint">
+          <p style={{ "--i": 3 } as React.CSSProperties} className="vx-rise text-base text-faint">
             Every project starts with a free 45&#8209;minute call and a fixed&#8209;price
             proposal in writing.
           </p>
@@ -61,7 +61,7 @@ export default function HomePage() {
 
         {/* The product, not a mock of one. */}
         <Wrap className="relative mt-10 lg:mt-16">
-          <div className="rounded-3xl border border-border bg-[linear-gradient(180deg,#101314,#0b0d0e)] p-2.5 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.9)] lg:p-3.5">
+          <div className="vx-frame rounded-3xl border border-border bg-[linear-gradient(180deg,#101314,#0b0d0e)] p-2.5 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.9)] lg:p-3.5">
             <div className="overflow-hidden rounded-xl border border-border bg-background-secondary">
               <Image
                 src="/medicos-overview.webp"
@@ -101,11 +101,11 @@ export default function HomePage() {
           <span className="whitespace-nowrap font-mono text-xs uppercase tracking-[0.16em] text-faint">
             The stack we build on
           </span>
-          <div className="flex flex-wrap gap-2.5">
+          <div data-reveal="stagger" className="flex flex-wrap gap-2.5">
             {stack.map((s) => (
               <span
                 key={s}
-                className="inline-flex h-[30px] items-center rounded-full border border-border bg-background px-3 text-sm font-medium text-muted"
+                className="vx-chip inline-flex h-[30px] items-center rounded-full border border-border bg-background px-3 text-sm font-medium text-muted"
               >
                 {s}
               </span>
@@ -118,15 +118,16 @@ export default function HomePage() {
       <Section>
         <Wrap>
           <SectionHead
+            reveal
             eyebrow="Why Vexora exists"
             title="Small businesses keep buying software that doesn't fit them."
             lead="Not because the tools are bad, but because nobody sat down with the business first. Six things we hear constantly, and what we do about each one."
           />
-          <div className="mt-8 grid gap-5 lg:mt-[52px] lg:grid-cols-3">
+          <div data-reveal="stagger" className="mt-8 grid gap-5 lg:mt-[52px] lg:grid-cols-3">
             {problems.map((p) => (
               <article
                 key={p.title}
-                className="flex flex-col gap-4 rounded-2xl border border-border bg-surface p-6 lg:p-7"
+                className="vx-card flex flex-col gap-4 rounded-2xl border border-border bg-surface p-6 lg:p-7"
               >
                 <h3 className="text-xl">{p.title}</h3>
                 <p className="text-sm leading-relaxed text-muted">{p.problem}</p>
@@ -145,21 +146,21 @@ export default function HomePage() {
       <Section>
         <Wrap>
           <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
-            <SectionHead eyebrow="What we build" title="Five things we do, properly." />
+            <SectionHead reveal eyebrow="What we build" title="Five things we do, properly." />
             <Link
               href="/services"
-              className="inline-flex h-11 shrink-0 items-center gap-2 rounded-full border border-white/[0.16] px-5 font-display text-[15px] font-semibold"
+              className="vx-btn inline-flex h-11 shrink-0 items-center gap-2 rounded-full border border-white/[0.16] px-5 font-display text-[15px] font-semibold hover:border-white/30"
             >
               All services
               <ArrowRight />
             </Link>
           </div>
 
-          <div className="mt-8 grid gap-5 lg:mt-12 lg:grid-cols-3">
+          <div data-reveal="stagger" className="mt-8 grid gap-5 lg:mt-12 lg:grid-cols-3">
             {services.map((s, i) => (
               <article
                 key={s.slug}
-                className={`flex flex-col gap-3 rounded-2xl border p-6 lg:p-7 ${
+                className={`vx-card flex flex-col gap-3 rounded-2xl border p-6 lg:p-7 ${
                   i === 0
                     ? "border-accent/25 bg-[linear-gradient(135deg,#151a14,#111314)] lg:col-span-2"
                     : "border-border bg-surface"
@@ -176,7 +177,7 @@ export default function HomePage() {
                     {s.includes.slice(0, 4).map((inc) => (
                       <span
                         key={inc}
-                        className="inline-flex h-[30px] items-center rounded-full border border-border bg-background-secondary px-3 text-sm font-medium text-muted"
+                        className="vx-chip inline-flex h-[30px] items-center rounded-full border border-border bg-background-secondary px-3 text-sm font-medium text-muted"
                       >
                         {inc}
                       </span>
@@ -186,7 +187,7 @@ export default function HomePage() {
               </article>
             ))}
 
-            <article className="flex flex-col justify-center gap-3.5 rounded-2xl bg-accent p-6 lg:p-7">
+            <article className="vx-card flex flex-col justify-center gap-3.5 rounded-2xl border border-accent bg-accent p-6 lg:p-7">
               <h3 className="text-2xl text-accent-foreground">Not sure which one you need?</h3>
               <p className="text-sm leading-relaxed text-accent-foreground/75">
                 Describe the problem, not the solution. We will tell you honestly what it
@@ -208,7 +209,7 @@ export default function HomePage() {
       <div className="mt-16 border-y border-border bg-background-secondary lg:mt-[118px]">
         <Wrap className="py-14 lg:py-[84px]">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.4fr] lg:gap-16">
-            <div className="flex flex-col gap-4">
+            <div data-reveal className="flex flex-col gap-4">
               <Eyebrow>Our terms</Eyebrow>
               <h2 className="text-[30px] lg:text-[42px]">
                 Three things we put in writing, every time.
@@ -218,11 +219,11 @@ export default function HomePage() {
                 these, you have something to hold us to.
               </p>
             </div>
-            <div className="grid gap-5 sm:grid-cols-3">
+            <div data-reveal="stagger" className="grid gap-5 sm:grid-cols-3">
               {commitments.map((c, i) => (
                 <div
                   key={c.n}
-                  className={`flex flex-col gap-3 rounded-2xl border p-6 ${
+                  className={`vx-card flex flex-col gap-3 rounded-2xl border p-6 ${
                     i === 2 ? "border-accent/30 bg-accent/[0.05]" : "border-border bg-surface"
                   }`}
                 >
@@ -241,8 +242,8 @@ export default function HomePage() {
       {/* HOW WE WORK */}
       <Section>
         <Wrap>
-          <SectionHead eyebrow="How we work" title="Four steps. No black box." />
-          <div className="mt-8 grid gap-5 lg:mt-[52px] lg:grid-cols-4">
+          <SectionHead reveal eyebrow="How we work" title="Four steps. No black box." />
+          <div data-reveal="stagger" className="mt-8 grid gap-5 lg:mt-[52px] lg:grid-cols-4">
             {steps.map((s, i) => (
               <div
                 key={s.n}
@@ -274,7 +275,7 @@ export default function HomePage() {
 
       {/* AUDIENCE + COMPARISON */}
       <Section>
-        <Wrap className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        <Wrap data-reveal="stagger" className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <div className="flex flex-col gap-5">
             <Eyebrow>Who we build for</Eyebrow>
             <h2 className="text-[30px] lg:text-[38px]">
@@ -331,7 +332,7 @@ export default function HomePage() {
 
       {/* FAQ */}
       <Section>
-        <Wrap className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
+        <Wrap data-reveal="stagger" className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
           <div className="flex flex-col gap-4">
             <Eyebrow>Questions</Eyebrow>
             <h2 className="text-[30px] lg:text-[40px]">Asked and answered.</h2>
@@ -347,8 +348,8 @@ export default function HomePage() {
             {faqs.map((f, i) => (
               <details key={f.q} open={i === 0} className="group border-b border-separator py-6">
                 <summary className="flex cursor-pointer list-none items-start justify-between gap-6">
-                  <h3 className="text-lg group-open:text-foreground lg:text-xl">{f.q}</h3>
-                  <span className="mt-1 shrink-0 text-accent transition group-open:rotate-45">
+                  <h3 className="text-lg transition-colors group-open:text-foreground group-hover:text-accent lg:text-xl">{f.q}</h3>
+                  <span className="mt-1 shrink-0 text-accent transition-transform duration-300 group-open:rotate-45">
                     <svg viewBox="0 0 24 24" aria-hidden className="size-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round">
                       <path d="M12 5v14M5 12h14" />
                     </svg>

@@ -43,7 +43,7 @@ export default function AboutPage() {
     <>
       <div className="relative overflow-hidden pt-14 lg:pt-[92px]">
         <div className="vx-glow left-[8%] top-[-300px] h-[620px] w-[880px]" />
-        <Wrap className="relative grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-20">
+        <Wrap className="vx-hero relative grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-20">
           <div className="flex flex-col gap-5">
             <Eyebrow>About Vexora</Eyebrow>
             <h1 className="text-[36px] leading-[1.06] lg:text-[58px] lg:leading-[1.04]">
@@ -63,7 +63,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-3.5 rounded-2xl border border-border bg-surface p-6 lg:p-8">
+          <div className="vx-card flex flex-col gap-3.5 rounded-2xl border border-border bg-surface p-6 lg:p-8">
             <span className="font-mono text-xs uppercase tracking-[0.16em] text-faint">
               Company details
             </span>
@@ -95,9 +95,9 @@ export default function AboutPage() {
             and complain about if we miss.
           </p>
         </div>
-        <div className="mt-8 grid gap-5 lg:mt-11 lg:grid-cols-4">
+        <div data-reveal="stagger" className="mt-8 grid gap-5 lg:mt-11 lg:grid-cols-4">
           {rules.map((r) => (
-            <div key={r.n} className="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-6 lg:p-7">
+            <div key={r.n} className="vx-card flex flex-col gap-3 rounded-2xl border border-border bg-surface p-6 lg:p-7">
               <span className="font-display text-sm font-semibold tracking-[0.1em] text-accent">
                 {r.n}
               </span>
@@ -119,7 +119,7 @@ export default function AboutPage() {
             you can reach any of them directly.
           </p>
         </div>
-        <div className="mt-8 grid gap-5 lg:mt-10 lg:grid-cols-3">
+        <div data-reveal="stagger" className="mt-8 grid gap-5 lg:mt-10 lg:grid-cols-3">
           <div className="flex flex-col justify-center gap-3 rounded-2xl border border-dashed border-white/[0.14] bg-background-secondary p-6 lg:p-7">
             <h3 className="text-[21px]">Hiring soon</h3>
             <p className="text-sm leading-relaxed text-muted">

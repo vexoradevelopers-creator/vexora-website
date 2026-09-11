@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Saira, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
+import { RevealObserver } from "@/components/reveal-observer";
 import { company } from "@/lib/site";
 import "./globals.css";
 
@@ -54,6 +55,7 @@ export default function RootLayout({
       className={`dark ${saira.variable} ${plexSans.variable} ${plexMono.variable}`}
     >
       <body className="bg-background text-foreground antialiased">
+        <RevealObserver />
         <SiteNav />
         <main>{children}</main>
         <SiteFooter />

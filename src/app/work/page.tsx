@@ -22,7 +22,7 @@ export default function WorkPage() {
     <>
       <div className="relative overflow-hidden pt-14 lg:pt-[92px]">
         <div className="vx-glow left-[10%] top-[-300px] h-[620px] w-[880px]" />
-        <Wrap className="relative flex max-w-[820px] flex-col gap-5">
+        <Wrap className="vx-hero relative flex max-w-[820px] flex-col gap-5">
           <Eyebrow>Work</Eyebrow>
           <h1 className="text-[38px] leading-[1.06] lg:text-[60px] lg:leading-[1.04]">
             Built to fit the business behind it.
@@ -38,7 +38,7 @@ export default function WorkPage() {
 
       {/* FEATURED */}
       <Wrap className="pt-10 lg:pt-16">
-        <div className="overflow-hidden rounded-3xl border border-accent/25 bg-[linear-gradient(135deg,#141715,#0f1112)]">
+        <div data-reveal className="overflow-hidden rounded-3xl border border-accent/25 bg-[linear-gradient(135deg,#141715,#0f1112)]">
           <div className="grid gap-8 p-6 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-14 lg:p-12">
             <div className="flex flex-col gap-5">
               <div className="flex flex-wrap gap-2">
@@ -81,7 +81,7 @@ export default function WorkPage() {
 
           <Rule />
 
-          <div className="grid lg:grid-cols-3">
+          <div data-reveal="stagger" className="grid lg:grid-cols-3">
             {[
               {
                 k: "The problem",
@@ -123,8 +123,8 @@ export default function WorkPage() {
           <h2 className="text-[30px] lg:text-[40px]">A distribution system, and a puzzle game.</h2>
         </div>
 
-        <div className="mt-8 grid gap-5 lg:mt-10 lg:grid-cols-2">
-          <article className="overflow-hidden rounded-2xl border border-border bg-surface">
+        <div data-reveal="stagger" className="mt-8 grid gap-5 lg:mt-10 lg:grid-cols-2">
+          <article className="vx-card overflow-hidden rounded-2xl border border-border bg-surface">
             <Image
               src="/medicos-prices.webp"
               alt="MediCos Nepal product and price-tier management, built by Vexora"
@@ -164,7 +164,7 @@ export default function WorkPage() {
             </div>
           </article>
 
-          <article className="overflow-hidden rounded-2xl border border-border bg-surface">
+          <article className="vx-card overflow-hidden rounded-2xl border border-border bg-surface">
             <Image
               src="/sortly.webp"
               alt="Sortly, a colour-sorting puzzle game built by Vexora"
@@ -201,7 +201,7 @@ export default function WorkPage() {
       </Wrap>
 
       <div className="mt-14 border-y border-border bg-background-secondary lg:mt-[88px]">
-        <Wrap className="grid items-center gap-8 py-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16 lg:py-[72px]">
+        <Wrap data-reveal="stagger" className="grid items-center gap-8 py-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16 lg:py-[72px]">
           <div className="flex flex-col gap-4">
             <Eyebrow>How these were made</Eyebrow>
             <h2 className="text-[28px] lg:text-[36px]">

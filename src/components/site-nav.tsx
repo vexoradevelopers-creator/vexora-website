@@ -12,9 +12,9 @@ export function SiteNav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="px-4 pt-3.5 lg:px-6 lg:pt-[22px]">
+    <header className="sticky top-0 z-50 px-4 pt-3.5 lg:px-6 lg:pt-[22px]">
       <div className="mx-auto w-full max-w-[1200px]">
-        <div className="flex h-[58px] items-center gap-10 rounded-full border border-border bg-surface pl-4 pr-2.5 lg:h-16 lg:pl-6 lg:pr-3">
+        <div className="flex h-[58px] items-center gap-10 rounded-full border border-border bg-surface/80 pl-4 pr-2.5 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.9)] backdrop-blur-xl lg:h-16 lg:pl-6 lg:pr-3">
           <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="Vexora home">
             <Image src="/vexora-mark.png" alt="" width={340} height={360} priority className="h-6 w-auto lg:h-[26px]" />
             <Image src="/vexora-wordmark.png" alt="Vexora" width={1012} height={128} priority className="h-[15px] w-auto lg:h-[17px]" />
@@ -27,10 +27,9 @@ export function SiteNav() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-sm font-medium transition ${
-                    active
-                      ? "border-b-2 border-accent pb-0.5 text-foreground"
-                      : "text-muted hover:text-foreground"
+                  aria-current={active ? "page" : undefined}
+                  className={`vx-navlink text-sm font-medium transition ${
+                    active ? "text-foreground" : "text-muted hover:text-foreground"
                   }`}
                 >
                   {item.label}
@@ -45,7 +44,7 @@ export function SiteNav() {
             </a>
             <Link
               href="/contact"
-              className="inline-flex h-9 items-center gap-2 rounded-full bg-accent px-4 font-display text-sm font-semibold text-accent-foreground transition hover:brightness-110"
+              className="vx-btn vx-btn-primary inline-flex h-9 items-center gap-2 rounded-full bg-accent px-4 font-display text-sm font-semibold text-accent-foreground transition hover:brightness-110"
             >
               Start a project
             </Link>
@@ -67,7 +66,7 @@ export function SiteNav() {
         </div>
 
         {open ? (
-          <div className="mt-3 flex flex-col rounded-3xl border border-border bg-surface p-5 lg:hidden">
+          <div className="vx-drop mt-3 flex flex-col rounded-3xl border border-border bg-surface/95 p-5 backdrop-blur-xl lg:hidden">
             {nav.map((item) => (
               <Link
                 key={item.href}

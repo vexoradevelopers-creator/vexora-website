@@ -35,7 +35,7 @@ export default function HowWeWorkPage() {
     <>
       <div className="relative overflow-hidden pt-14 lg:pt-[92px]">
         <div className="vx-glow left-[10%] top-[-300px] h-[640px] w-[900px]" />
-        <Wrap className="relative grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-end lg:gap-16">
+        <Wrap className="vx-hero relative grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-end lg:gap-16">
           <div className="flex flex-col gap-5">
             <Eyebrow>How we work</Eyebrow>
             <h1 className="text-[38px] leading-[1.06] lg:text-[60px] lg:leading-[1.04]">
@@ -48,7 +48,7 @@ export default function HowWeWorkPage() {
               those impossible.
             </p>
           </div>
-          <div className="flex flex-col gap-4 rounded-2xl border border-border bg-surface p-6 lg:p-7">
+          <div className="vx-card flex flex-col gap-4 rounded-2xl border border-border bg-surface p-6 lg:p-7">
             <h2 className="text-xl">The short version</h2>
             <div className="flex flex-col gap-3">
               {shortVersion.map((s) => (
@@ -66,6 +66,7 @@ export default function HowWeWorkPage() {
         <section key={s.n} className="pt-14 lg:pt-[76px]">
           <Wrap>
             <div
+              data-reveal
               className="grid gap-8 border-t-2 pt-9 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16"
               style={{
                 borderColor:
@@ -96,7 +97,7 @@ export default function HowWeWorkPage() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-border bg-surface p-6 lg:p-7">
+              <div className="vx-card rounded-2xl border border-border bg-surface p-6 lg:p-7">
                 <h3 className="text-lg">What you get from this step</h3>
                 <Rule className="my-4" />
                 <p className="text-sm leading-relaxed text-muted">{s.body}</p>
@@ -109,7 +110,7 @@ export default function HowWeWorkPage() {
       <div className="mt-16 border-y border-border bg-background-secondary lg:mt-[110px]">
         <Wrap className="py-14 lg:py-[84px]">
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.45fr] lg:gap-16">
-            <div className="flex flex-col gap-4">
+            <div data-reveal className="flex flex-col gap-4">
               <Eyebrow>Your side of it</Eyebrow>
               <h2 className="text-[28px] lg:text-[38px]">Three things we need from you.</h2>
               <p className="text-base leading-relaxed text-muted">
@@ -117,9 +118,9 @@ export default function HowWeWorkPage() {
                 three that matter, and we would rather say them out loud at the start.
               </p>
             </div>
-            <div className="grid gap-5 sm:grid-cols-3">
+            <div data-reveal="stagger" className="grid gap-5 sm:grid-cols-3">
               {asks.map((a) => (
-                <div key={a.title} className="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-6">
+                <div key={a.title} className="vx-card flex flex-col gap-3 rounded-2xl border border-border bg-surface p-6">
                   <h3 className="text-lg">{a.title}</h3>
                   <p className="text-sm leading-relaxed text-muted">{a.body}</p>
                 </div>
@@ -129,7 +130,7 @@ export default function HowWeWorkPage() {
         </Wrap>
       </div>
 
-      <Wrap className="grid gap-6 pt-16 lg:grid-cols-2 lg:pt-[104px]">
+      <Wrap data-reveal="stagger" className="grid gap-6 pt-16 lg:grid-cols-2 lg:pt-[104px]">
         <div className="flex flex-col gap-4">
           <Eyebrow>When things change</Eyebrow>
           <h2 className="text-[28px] lg:text-[38px]">Because they will.</h2>
@@ -155,7 +156,7 @@ export default function HowWeWorkPage() {
             A process is only worth something if there is a consequence attached. These are
             ours.
           </p>
-          <div className="rounded-2xl border border-border bg-surface p-6">
+          <div className="vx-card rounded-2xl border border-border bg-surface p-6">
             <h3 className="text-lg">Our commitment</h3>
             <p className="mt-3 text-sm leading-relaxed text-muted">
               If a milestone slips because of us, you hear about it the same week and the
