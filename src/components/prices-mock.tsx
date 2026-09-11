@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { useMock } from "./use-mock";
 import { DashSidebar, Icon, amber, coral, green, teal } from "./dash-parts";
 
 /**
@@ -37,17 +38,14 @@ const history: [string, string, string, string][] = [
 const COLS = "grid-cols-[1.9fr_0.8fr_0.6fr_0.7fr_0.6fr_0.6fr_0.8fr]";
 
 export function PricesMock() {
-  const ref = useRef<HTMLDivElement>(null);
+  const { ref, armed } = useMock(W);
   const [typed, setTyped] = useState("760");
   const [caret, setCaret] = useState(false);
   const [pressed, setPressed] = useState(false);
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const ro = new ResizeObserver(([e]) => el.style.setProperty("--s", String(e.contentRect.width / W)));
-    ro.observe(el);
+    if (!armed) return;
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       // Jump straight to the saved state, no replay.
@@ -55,10 +53,7 @@ export function PricesMock() {
         setTyped("790");
         setSaved(true);
       }, 0);
-      return () => {
-        ro.disconnect();
-        window.clearTimeout(done);
-      };
+      return () => window.clearTimeout(done);
     }
 
     // One edit cycle, replayed every LOOP ms after the entrance has finished.
@@ -79,17 +74,16 @@ export function PricesMock() {
     const first = window.setTimeout(run, 1400);
     const loop = window.setInterval(run, LOOP);
     return () => {
-      ro.disconnect();
       window.clearTimeout(first);
       window.clearInterval(loop);
       timers.forEach(window.clearTimeout);
     };
-  }, []);
+  }, [armed]);
 
   return (
     <div
       ref={ref}
-      className="relative w-full overflow-hidden bg-[#f3f6f8] text-[#1a1f24]"
+      className={`vx-mock relative w-full overflow-hidden bg-[#f3f6f8] text-[#1a1f24] ${armed ? "is-armed" : ""}`}
       style={{ aspectRatio: `${W} / ${H}`, containerType: "inline-size", ["--s" as string]: `tan(atan2(100cqw, ${W}px))` }}
       role="img"
       aria-label="MediCos Nepal product and price-tier management, built by Vexora: dealer, retailer and MRP prices with effective dates and a full history."

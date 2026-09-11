@@ -773,3 +773,10 @@ details[open] > :not(summary) {
     transition: none;
   }
 }
+
+/* Product mocks wait for the visitor: nothing inside animates until the mock
+   has scrolled into view and picked up .is-armed (see use-mock.ts). */
+.vx-mock:not(.is-armed),
+.vx-mock:not(.is-armed) * {
+  animation-play-state: paused !important;
+}

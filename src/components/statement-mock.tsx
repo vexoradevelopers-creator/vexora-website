@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useMock } from "./use-mock";
 
 /**
  * The Shailesh & Associates audited-statement screen, rebuilt in HTML. Fixed
@@ -56,19 +56,12 @@ const ROW_STEP = 0.055;
 const DONE = ROW_START + rows.length * ROW_STEP + 0.3;
 
 export function StatementMock() {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const ro = new ResizeObserver(([e]) => el.style.setProperty("--s", String(e.contentRect.width / W)));
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
+  const { ref, armed } = useMock(W);
 
   return (
     <div
       ref={ref}
-      className="relative w-full overflow-hidden bg-[#f6f8fa] text-[#1a1f24]"
+      className={`vx-mock relative w-full overflow-hidden bg-[#f6f8fa] text-[#1a1f24] ${armed ? "is-armed" : ""}`}
       style={{ aspectRatio: `${W} / ${H}`, containerType: "inline-size", ["--s" as string]: `tan(atan2(100cqw, ${W}px))` }}
       role="img"
       aria-label="An audited Statement of Financial Position generated inside the Shailesh & Associates system, in the format ICAN expects."

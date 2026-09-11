@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { useMock } from "./use-mock";
 
 /**
  * Sortly, rebuilt in HTML with a real pour. Fixed 1000x563 layout scaled to
@@ -66,34 +67,24 @@ function Tube({ t, i }: { t: (typeof tubes)[number]; i: number }) {
 }
 
 export function SortlyMock() {
-  const ref = useRef<HTMLDivElement>(null);
+  const { ref, armed } = useMock(W);
   const [moves, setMoves] = useState(0);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const ro = new ResizeObserver(([e]) => el.style.setProperty("--s", String(e.contentRect.width / W)));
-    ro.observe(el);
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return () => ro.disconnect();
-    }
+    if (!armed || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     // Keep the counter in step with the CSS loop: pours land at 30% and 70%.
     const t0 = performance.now();
     const tick = window.setInterval(() => {
       const p = ((performance.now() - t0) % LOOP) / LOOP;
       setMoves(p < 0.3 ? 0 : p < 0.7 ? 1 : 2);
     }, 200);
-    return () => {
-      ro.disconnect();
-      window.clearInterval(tick);
-    };
-  }, []);
+    return () => window.clearInterval(tick);
+  }, [armed]);
 
   return (
     <div
       ref={ref}
-      className="relative w-full overflow-hidden text-white"
+      className={`vx-mock relative w-full overflow-hidden text-white ${armed ? "is-armed" : ""}`}
       style={{
         aspectRatio: `${W} / ${H}`,
         containerType: "inline-size",

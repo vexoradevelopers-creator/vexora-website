@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { useMock } from "./use-mock";
 import { DashSidebar, Icon, amber, coral, green, teal } from "./dash-parts";
 
 /**
@@ -55,9 +56,10 @@ function lakh(n: number) {
   return `${rest},${last}`;
 }
 
-function CountUp({ value, prefix = "", delay = 0 }: { value: number; prefix?: string; delay?: number }) {
+function CountUp({ value, prefix = "", delay = 0, run }: { value: number; prefix?: string; delay?: number; run: boolean }) {
   const [n, setN] = useState(0);
   useEffect(() => {
+    if (!run) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
     let start = 0;
@@ -74,7 +76,7 @@ function CountUp({ value, prefix = "", delay = 0 }: { value: number; prefix?: st
       window.clearTimeout(id);
       cancelAnimationFrame(raf);
     };
-  }, [value, delay]);
+  }, [value, delay, run]);
   return (
     <>
       {prefix}
@@ -84,23 +86,12 @@ function CountUp({ value, prefix = "", delay = 0 }: { value: number; prefix?: st
 }
 
 export function HeroDashboard() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  // CSS gives a first-paint scale (tan/atan2); this keeps it exact everywhere.
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const ro = new ResizeObserver(([e]) => {
-      el.style.setProperty("--s", String(e.contentRect.width / W));
-    });
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
+  const { ref, armed } = useMock(W);
 
   return (
     <div
       ref={ref}
-      className="vx-dash relative w-full overflow-hidden bg-[#f3f6f8] text-[#1a1f24]"
+      className={`vx-dash vx-mock relative w-full overflow-hidden bg-[#f3f6f8] text-[#1a1f24] ${armed ? "is-armed" : ""}`}
       style={{ aspectRatio: `${W} / ${H}`, containerType: "inline-size" }}
       role="img"
       aria-label="The MediCos Nepal distribution dashboard, built by Vexora: sales, receivables, orders in pipeline, top dealers and alerts on one screen."
@@ -156,7 +147,7 @@ export function HeroDashboard() {
                     {s.k}
                   </div>
                   <div className="mt-2 text-[19px] font-semibold tabular-nums tracking-tight" style={{ color: s.color }}>
-                    <CountUp value={s.v} prefix={s.prefix} delay={600 + i * 70} />
+                    <CountUp value={s.v} prefix={s.prefix} delay={600 + i * 70} run={armed} />
                   </div>
                   <div className="mt-1 text-[9px] text-[#6d777f]">{s.sub}</div>
                 </div>
@@ -174,7 +165,7 @@ export function HeroDashboard() {
                 </div>
                 <div className="mt-2 flex items-baseline gap-2.5">
                   <span className="text-[22px] font-semibold tabular-nums tracking-tight">
-                    <CountUp value={2846300} prefix="Rs " delay={800} />
+                    <CountUp value={2846300} prefix="Rs " delay={800} run={armed} />
                   </span>
                   <span className="text-[9.5px] font-semibold" style={{ color: green }}>
                     +12% vs Shrawan
