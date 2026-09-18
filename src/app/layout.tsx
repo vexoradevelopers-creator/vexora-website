@@ -28,7 +28,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vexora.com.np"),
+  metadataBase: new URL("https://vexoradevelopers.com.np"),
   title: {
     default: "Vexora: web applications, websites, mobile apps and games",
     template: "%s · Vexora",
