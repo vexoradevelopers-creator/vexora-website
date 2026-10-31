@@ -44,6 +44,8 @@ export const metadata: Metadata = {
     type: "website",
   },
   robots: { index: true, follow: true },
+  // Google Search Console ownership (URL-prefix property). Removing it unverifies the site.
+  verification: { google: "_M3QlxTKFwjkuO6s5-Er5y3-Go57aVn7hiQHSasy8hw" },
 };
 
 export default function RootLayout({
